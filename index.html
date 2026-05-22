@@ -1,11 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BestellApp</title>
-</head>
-<body>
-    
-</body>
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/layout.css" />
+        <link rel="stylesheet" href="css/header.css" />
+        <link rel="stylesheet" href="css/menu.css" />
+        <link rel="stylesheet" href="css/cart.css" />
+        <link rel="stylesheet" href="css/mobile.css" />
+
+        <script src="js/data.js" defer></script>
+        <script src="js/menu.js" defer></script>
+        <script src="js/cart.js" defer></script>
+        <script src="js/mobile.js" defer></script>
+        <script src="js/app.js" defer></script>
+
+        <title>BurgerHouse</title>
+    </head>
+
+    <body>
+        <header id="header">
+            <div class="header_image"></div>
+
+            <div class="restaurant_box">
+                <img src="assets/icon/main-icon.png" class="restaurant_logo" />
+                <h1>BurgerHouse</h1>
+                <div class="rating">
+                    <img src="assets/icon/rating-icon.png" />
+                </div>
+            </div>
+        </header>
+
+        <nav id="top_nav">
+            <div class="nav_item active">
+                <img src="assets/icon/home-icon-white.png" />
+                <span>Home</span>
+            </div>
+            <div class="nav_item">
+                <img src="assets/icon/menu-icon-white.png" />
+                <span>Menü</span>
+            </div>
+            <div class="nav_item">
+                <img src="assets/icon/person-icon-white.png" />
+                <span>Profil</span>
+            </div>
+        </nav>
+
+        <main id="layout">
+            <section id="menu_section">
+                <div id="menu_header">
+                    <h2>Speisekarte</h2>
+                </div>
+
+                <div id="menu_categories">
+                    <button data-cat="burger">
+                        <img src="assets/icon/burger-icon.png" />
+                        Burger & Sandwiches
+                    </button>
+
+                    <button data-cat="pizza">
+                        <img src="assets/icon/pizza-icon.png" />
+                        Pizza (30cm)
+                    </button>
+
+                    <button data-cat="salad">
+                        <img src="assets/icon/salad-icon.png" />
+                        Salate
+                    </button>
+                </div>
+
+                <div id="menu_list"></div>
+            </section>
+
+            <aside id="cart_section">
+                <div id="cart_header">
+                    <img src="assets/icon/shopping-cart-orange.png" />
+                    <h2>Your Basket</h2>
+                </div>
+
+                <div id="cart_content">
+                    <p>Füge etwas Leckeres hinzu</p>
+                    <div id="separator"></div>
+                </div>
+            </aside>
+        </main>
+
+        <button id="mobile_cart_button">
+            <img src="assets/icon/shopping-cart-white.png" />
+        </button>
+
+        <dialog id="mobile_cart">
+            <div id="mobile_cart_header">
+                <h2>Warenkorb</h2>
+                <button id="mobile_cart_close">X</button>
+            </div>
+            <div id="mobile_cart_content"></div>
+        </dialog>
+    </body>
 </html>

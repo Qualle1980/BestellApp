@@ -1,0 +1,140 @@
+/* === CART WRAPPER === */
+#cart_section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* === CART TITLE === */
+#cart_section h2 {
+    font-family: "PalanquinDark", sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+
+/* === EMPTY CART MESSAGE === */
+#empty_cart {
+    font-family: "Palanquin", sans-serif;
+    font-size: 17px;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+/* === CART ITEMS LIST === */
+#cart_items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 6px;
+}
+
+
+/* === SINGLE CART ITEM === */
+.cart_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 14px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+
+/* === ITEM INFO === */
+.cart_item_info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart_item_title {
+    font-family: "PalanquinDark", sans-serif;
+    font-size: 18px;
+}
+
+.cart_item_price {
+    font-family: "Palanquin", sans-serif;
+    font-size: 16px;
+    color: #444;
+}
+
+
+/* === QUANTITY CONTROLS === */
+.cart_controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart_btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #ff7a00;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.cart_btn:hover {
+    background: #e96f00;
+    transform: scale(1.05);
+}
+
+.cart_qty {
+    font-family: "PalanquinDark", sans-serif;
+    font-size: 18px;
+}
+
+
+/* === TOTAL BOX === */
+#cart_total {
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.total_row {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Palanquin", sans-serif;
+    font-size: 17px;
+}
+
+.total_row strong {
+    font-family: "PalanquinDark", sans-serif;
+    font-size: 18px;
+}
+
+
+/* === ORDER BUTTON === */
+#order_btn {
+    width: 100%;
+    padding: 14px;
+    background: #ff7a00;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: "PalanquinDark", sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+#order_btn:hover {
+    background: #e96f00;
+    transform: scale(1.02);
+}

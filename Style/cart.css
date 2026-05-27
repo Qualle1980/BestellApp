@@ -1,140 +1,121 @@
-/* === CART WRAPPER === */
-#cart_section {
+/* Basket Wrapper */
+.basket_wrapper {
+    width: 420px;
+    background-color: rgba(54, 53, 52, 1);
+    padding: 32px 24px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
+    border-radius: 12px;
+    position: sticky;
+    top: 0;
+    height: fit-content;
 }
 
-
-/* === CART TITLE === */
-#cart_section h2 {
+/* Basket Title */
+.basket_title {
     font-family: "PalanquinDark", sans-serif;
-    font-size: 24px;
-    margin: 0;
+    font-size: 28px;
+    color: white;
 }
 
-
-/* === EMPTY CART MESSAGE === */
-#empty_cart {
-    font-family: "Palanquin", sans-serif;
-    font-size: 17px;
-    color: #777;
+/* Basket Empty */
+.basket_empty {
+    font-size: 18px;
+    color: #ccc;
     text-align: center;
-    margin-top: 20px;
 }
 
-
-/* === CART ITEMS LIST === */
-#cart_items {
+/* Basket Items */
+.basket_items {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-height: 350px;
-    overflow-y: auto;
-    padding-right: 6px;
 }
 
-
-/* === SINGLE CART ITEM === */
-.cart_item {
+/* Basket Item */
+.basket_item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fff;
-    padding: 14px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    background-color: #fdeadc;
+    padding: 12px 16px;
+    border-radius: 10px;
 }
 
-
-/* === ITEM INFO === */
-.cart_item_info {
+/* Basket Item Info */
+.basket_item_info {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.cart_item_title {
-    font-family: "PalanquinDark", sans-serif;
+/* Basket Item Name */
+.basket_item_name {
     font-size: 18px;
+    font-weight: 600;
+    color: #363534;
 }
 
-.cart_item_price {
-    font-family: "Palanquin", sans-serif;
-    font-size: 16px;
-    color: #444;
+/* Basket Item Price */
+.basket_item_price {
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #363534;
 }
 
-
-/* === QUANTITY CONTROLS === */
-.cart_controls {
+/* Basket Controls */
+.basket_controls {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
-.cart_btn {
-    width: 32px;
-    height: 32px;
+/* Basket Button */
+.basket_btn {
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     border: none;
-    background: #ff7a00;
+    background-color: #ff7a00;
     color: white;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.15s ease;
-}
-
-.cart_btn:hover {
-    background: #e96f00;
-    transform: scale(1.05);
-}
-
-.cart_qty {
-    font-family: "PalanquinDark", sans-serif;
     font-size: 18px;
+    cursor: pointer;
 }
 
-
-/* === TOTAL BOX === */
-#cart_total {
-    background: #fff;
-    padding: 18px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+/* Basket Summary */
+.basket_summary {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 2px solid #ff7a00;
 }
 
-.total_row {
+/* Basket Summary Row */
+.basket_summary_row {
     display: flex;
     justify-content: space-between;
-    font-family: "Palanquin", sans-serif;
-    font-size: 17px;
-}
-
-.total_row strong {
-    font-family: "PalanquinDark", sans-serif;
     font-size: 18px;
+    color: white;
 }
 
+/* Basket Total */
+.basket_total {
+    font-size: 22px;
+    font-weight: 700;
+}
 
-/* === ORDER BUTTON === */
-#order_btn {
-    width: 100%;
-    padding: 14px;
-    background: #ff7a00;
+/* Basket Buy Button */
+.basket_buy_btn {
+    background-color: #ff7a00;
     color: white;
     border: none;
+    padding: 14px 20px;
     border-radius: 12px;
+    font-size: 20px;
     font-family: "PalanquinDark", sans-serif;
-    font-size: 18px;
     cursor: pointer;
-    transition: 0.15s ease;
-}
-
-#order_btn:hover {
-    background: #e96f00;
-    transform: scale(1.02);
+    margin-top: 12px;
 }

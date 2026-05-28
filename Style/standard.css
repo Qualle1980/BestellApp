@@ -1,14 +1,27 @@
+/* Global reset */
 * {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
     box-sizing: border-box;
     text-decoration: none;
-    position: relative;
     list-style: none;
-    font-size: inherit;
-    color: inherit;
-    font-family: inherit;
-    background: initial;
-    border: initial;
+
+}
+
+
+/* Base styles */
+html, body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Images  */
+img {
+    max-width: 100%;
+    display: block;
 }

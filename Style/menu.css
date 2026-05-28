@@ -1,148 +1,95 @@
-/* Content */
-.content {
+.foodCategories {
     width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 40px 40px 120px 40px;
-}
-p{
-    margin-bottom: 40px;
-    font-family: "palanquin";
-    font-size: 700;
-    font-weight: bold;
-    size: 24px;
-}
-/* Menu Title Wrapper */
-.menu_title_wrapper {
-    width: 100%;
-    background-color: #e76c1f;
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
-    margin-bottom: 32px;
-    position: relative;
-    overflow: visible;
-    height: 90px;
+    max-width: 900px;
+    margin: 40px auto;
 }
 
-/* Menu Title */
-.menu_title {
-    width: 710px;
-    height: 60px;
+.foodCategories header {
     display: flex;
     align-items: center;
-    gap: 16px;
-    color: white;
-    font-family: "PalanquinDark", sans-serif;
+    margin-bottom: 20px;
+}
+
+.headerContentWrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.headerContentWrapper img {
+    height: 36px;
+}
+
+.headerContentWrapper h1 {
     font-size: 28px;
-    padding-left: 30px;
-    border-radius: 12px;
-    position: relative;
+    font-weight: 700;
 }
 
-/* Menu Title Icon */
-.menu_title_icon {
-    width: 88px;
-    height: 120px;
-    object-fit: contain;
-    position: absolute;
-    left: -80px;
-    top: -30px;
-    pointer-events: none;
-}
-
-/* Menu Section */
-.menu_section {
-    width: 100%;
+.foodCategoryMealSection {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 80px;
+    gap: 20px;
 }
 
-/* Menu Item */
-.menu_item {
-    width: 710px;
-    background-color: #fdeadc;
-    padding: 16px;
+.singleMeal {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 16px;
-    border-radius: 10px;
-    margin-bottom: 24px;
+    gap: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-/* Menu Img */
-.menu_img {
-    width: 207px;
-    height: 121px;
-    border-radius: 10px;
+.imgMeal {
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    flex-shrink: 0;
+    border-radius: 12px;
 }
 
-/* Menu Info */
-.menu_info {
+.singleMealContentWrapper {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    justify-content: space-between;
 }
 
-/* Menu Row Top */
-.menu_row_top {
+.headerSingleMeal {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
-/* Menu Name */
-.menu_name {
-    font-family: "Palanquin", sans-serif;
-    font-weight: 600;
-    font-size: 24px;
-    margin: 0;
-    flex: 1;
+.headerSingleMeal h2 {
+    font-size: 20px;
+    font-weight: 700;
 }
 
-/* Menu Price Right */
-.menu_price_right {
-    font-family: "Palanquin", sans-serif;
-    font-weight: 600;
-    font-size: 24px;
-    color: #000;
-    white-space: nowrap;
+.mealHeaderPrice {
+    font-size: 20px;
+    font-weight: 700;
 }
 
-/* Menu Desc */
-.menu_desc {
-    font-family: "Palanquin", sans-serif;
+.singleMealContentWrapper p {
     font-size: 14px;
     color: #555;
-    margin: 0;
 }
 
-/* Menu Bottom */
-.menu_bottom {
+.buttonWrapper {
     display: flex;
     justify-content: flex-end;
 }
 
-/* Menu Button */
-.menu_btn {
-    background: #ff7a00;
+.buttonWrapper button {
+    background-color: #e76c1f;
     color: white;
     border: none;
-    padding: 6px 16px;
-    border-radius: 999px;
-    font-family: "PalanquinDark", sans-serif;
-    font-size: 14px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 16px;
     cursor: pointer;
 }
 
-/* Menu Button Added */
-.menu_btn.added {
-    background: #333;
+.buttonWrapper button:hover {
+    background-color: #cf5f1b;
 }

@@ -1,90 +1,15 @@
-/* Page Layout */
-body {
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    font-family: "Palanquin", sans-serif;
-    color: #363534;
-}
-
-#content {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 40px 40px 120px 40px;
-}
-
-
-/* Section Layout */
-.menu_section {
-    width: 100%;
-    margin-bottom: 80px;
-}
-
-.menu_title {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 32px;
-    color: #363534;
-}
-
-
-/* Grid Layout */
-.menu_grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-}
-
-
-/* Menu Item Layout */
-.menu_item {
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 16px;
+#hero {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-}
-
-.menu_img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.menu_name {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.menu_desc {
-    font-size: 16px;
-    line-height: 1.4;
-    color: #555555;
-}
-
-.menu_bottom {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
+    margin-bottom: 48px;
 }
 
-.menu_price {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.menu_btn {
-    background-color: #e76c1f;
-    color: #ffffff;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.menu_btn.added {
-    background-color: #363534;
+#hero-img-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 580px;
+    margin-bottom: 32px;
+    width: 100%;
 }

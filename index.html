@@ -1,373 +1,57 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BurgerHouse – BestellApp</title>
 
+        <link rel="stylesheet" href="Style/standard.css" />
         <link rel="stylesheet" href="Style/fonts.css" />
         <link rel="stylesheet" href="Style/layout.css" />
         <link rel="stylesheet" href="Style/header.css" />
         <link rel="stylesheet" href="Style/menu.css" />
         <link rel="stylesheet" href="Style/cart.css" />
         <link rel="stylesheet" href="Style/mobile.css" />
-        <link rel="stylesheet" href="Style/standard.css" />
-
-        <script src="script/data.js" defer></script>
-        <script src="script/menu.js" defer></script>
-        <script src="script/cart.js" defer></script>
-        <script src="script/templates.js" defer></script>
-        <script src="script/mobile.js" defer></script>
-        <script src="script/app.js" defer></script>
-
-        <title>BestellApp</title>
     </head>
 
-    <body onload="renderMenu()">
+    <body>
         <header>
-            <img
-                src="./assets/icon/menu-icon-white.png"
-                alt="menu_icon_white"
-            />
-            <img
-                id="menuIcon"
-                src="./assets/icon/menu.png"
-                alt="menu_icon_dark"
-            />
+            <img src="./assets/icon/menu-icon-white.png" alt="menu_icon_white" />
+            <img id="menuIcon" src="./assets/icon/menu.png" alt="menu_icon_dark" />
         </header>
 
         <main>
-            <!-- HERO SECTION -->
             <section id="hero">
-                <div id="hero-img-section">
-                    <img
-                        id="header-image"
-                        src="./assets/img/header-image.jpg"
-                        alt="header_image"
-                    />
-                    <img
-                        id="burger-logo"
-                        src="./assets/icon/main-icon.png"
-                        alt="mainBurgerIcon"
-                    />
-                </div>
+                <div id="hero-content">
+                    <img id="burger-logo" src="./assets/icon/main-icon.png" alt="mainBurgerIcon" />
 
-                <div id="headerStartPage">
-                    <div id="headerImgStartPage">
-                        <img
-                            src="./assets/icon/burgerHouseLogo.png"
-                            alt="burgerHouseLogo"
-                        />
-                        <img
-                            src="./assets/icon/rating-icon.png"
-                            alt="rating-icon"
-                        />
+                    <div id="headerStartPage">
+                        <div id="headerImgStartPage">
+                            <img src="./assets/icon/burgerHouseLogo.png" alt="burgerHouseLogo" />
+                            <img src="./assets/icon/rating-icon.png" alt="rating-icon" />
+                        </div>
+                        <p>The best of Burger, Pizza, and greens, all in one great place.</p>
                     </div>
-                    <p>
-                        The best of Burger, Pizza, and greens, all in one great
-                        place.
-                    </p>
                 </div>
             </section>
 
-            <!-- BURGER TITLE -->
-            <div class="menu_title_wrapper">
-                <div class="menu_title">
-                    <img
-                        src="./assets/icon/burger-icon.png"
-                        class="menu_title_icon"
-                    />
-                    Burger & Sandwiches
-                </div>
-            </div>
-
-            <!-- BURGER CONTENT -->
-            <div class="content">
-                <section class="menu_section">
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/veggie-burger.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">
-                                    Veggie mushroom burger
-                                </h3>
-                                <span class="menu_price_right">14.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Mixed salad, Tomato, Lettuce, Fried mushrooms
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn added">Added 1</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/all-meat-burger.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">All meat burger</h3>
-                                <span class="menu_price_right">15.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Beef, Bacon, Cheese, Tomato, Lettuce
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/beef-red-burger.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">Beef red burger</h3>
-                                <span class="menu_price_right">14.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Beef, Cheese, Tomato, Lettuce, Onion
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/big-chicken-burger.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">Big chicken burger</h3>
-                                <span class="menu_price_right">15.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Chicken, Tomato, Lettuce, Cheese, Red onion
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- PIZZA TITLE -->
-            <div class="menu_title_wrapper">
-                <div class="menu_title">
-                    <img
-                        src="./assets/icon/pizza-icon.png"
-                        class="menu_title_icon"
-                    />
-                    Pizza (30cm)
-                </div>
-            </div>
-
-            <!-- PIZZA CONTENT -->
-            <div class="content">
-                <section class="menu_section">
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/pizza-margherita.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">Pizza Margherita</h3>
-                                <span class="menu_price_right">11.90€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Tomato sauce, Mozzarella, Basil
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/pizza-chorizo.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">Pizza Chorizo</h3>
-                                <span class="menu_price_right">13.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Tomato sauce, Mozzarella, Chorizo
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/pizza-funghi.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">Funghi</h3>
-                                <span class="menu_price_right">12.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Tomato sauce, Grated Mushrooms
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/pizza-quattro.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">
-                                    Quattro formaggi with Chicken
-                                </h3>
-                                <span class="menu_price_right">14.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Mozzarella, Fontina, Gorgonzola, Parmesan,
-                                Chicken
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- SALAD TITLE -->
-            <div class="menu_title_wrapper">
-                <div class="menu_title">
-                    <img
-                        src="./assets/icon/salad-icon.png"
-                        class="menu_title_icon"
-                    />
-                    Salad
-                </div>
-            </div>
-
-            <!-- SALAD CONTENT -->
-            <div class="content">
-                <section class="menu_section">
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/beef-salad.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">
-                                    Warm beef arugula salad
-                                </h3>
-                                <span class="menu_price_right">16.90€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Arugula, Cherry tomatoes, Beef, Honey mustard
-                                dressing
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/mini-salad.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">Mini green salad</h3>
-                                <span class="menu_price_right">7.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Mixed lettuce, Cucumber, Carrots, Peppers,
-                                Tomatoes
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/green-salad.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">
-                                    Green salad with sea food
-                                </h3>
-                                <span class="menu_price_right">16.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Mixed lettuce, Sea food, Cherry tomatoes, Olive
-                                oil dressing
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="menu_item">
-                        <img
-                            src="./assets/img/vegan-salad.jpg"
-                            class="menu_img"
-                        />
-                        <div class="menu_info">
-                            <div class="menu_row_top">
-                                <h3 class="menu_name">
-                                    Vegan green salad with tofu
-                                </h3>
-                                <span class="menu_price_right">14.00€</span>
-                            </div>
-                            <p class="menu_desc">
-                                Mixed lettuce, Cucumber, Carrots, Peppers,
-                                Tomatoes, Tofu
-                            </p>
-                            <div class="menu_bottom">
-                                <button class="menu_btn">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <section id="sectionMenu"></section>
         </main>
 
         <footer>
             <p>
                 <span>© 2026 BurgerHouse</span>
                 <span>Inprint</span>
-                <span>cookie References</span>
+                <span>Cookie References</span>
             </p>
         </footer>
 
+        <!-- MODULE SCRIPTS -->
+        <script type="module" src="script/data.js"></script>
+        <script type="module" src="script/templates.js"></script>
+        <script type="module" src="script/menu.js"></script>
+        <script type="module" src="script/cart.js"></script>
+        <script type="module" src="script/mobile.js"></script>
+        <script type="module" src="script/app.js"></script>
     </body>
 </html>

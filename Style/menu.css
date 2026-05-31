@@ -1,19 +1,26 @@
+
+
+
+
 /* ===========================
-   CATEGORY HEADER (CENTERED)
+   CATEGORY HEADER
    =========================== */
 
 .categoryHeader {
-    width: 100%;
+    width: 1920px;
+    height: 60px;
     background-color: #e76c1f;
-    padding: 20px 0;
+    opacity: 1;
+    position: relative;
+    top: 16px;
     display: flex;
     justify-content: center;
-    position: relative;
-    z-index: 1;
+    align-items: center;
+    margin-left: -100px;
 }
 
 .categoryHeaderContent {
-    width: 900px;
+    width: 1920px;
     max-width: 100%;
     display: flex;
     align-items: center;
@@ -21,13 +28,13 @@
 }
 
 .categoryHeaderContent img {
-    width: 40px;
-    height: 40px;
+    width: 88px;
+    height: 91px;
 }
 
 .categoryHeaderContent h1 {
     color: white;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
     margin: 0;
 }
@@ -43,7 +50,7 @@
 
 
 /* ===========================
-   SINGLE MEAL CARD
+   MEAL CARD
    =========================== */
 
 .singleMeal {
@@ -71,7 +78,7 @@
 
 
 /* ===========================
-   MEAL HEADER (TITLE + PRICE)
+   MEAL HEADER
    =========================== */
 
 .headerSingleMeal {
@@ -129,7 +136,7 @@
 
 
 /* ===========================
-   SPACING BETWEEN MEALS
+   MEAL SPACING
    =========================== */
 
 .singleMeal + .singleMeal {
@@ -138,7 +145,7 @@
 
 
 /* ===========================
-   BASKET STICKY ABOVE ALL
+   BASKET STICKY
    =========================== */
 
 #basketWrapper {

@@ -1,75 +1,63 @@
 <!doctype html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>BurgerHouse – BestellApp</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BurgerHouse – BestellApp</title>
 
-        <link rel="stylesheet" href="Style/standard.css" />
-        <link rel="stylesheet" href="Style/fonts.css" />
-        <link rel="stylesheet" href="Style/layout.css" />
-        <link rel="stylesheet" href="Style/header.css" />
-        <link rel="stylesheet" href="Style/menu.css" />
-        <link rel="stylesheet" href="Style/cart.css" />
-        <link rel="stylesheet" href="Style/mobile.css" />
-    </head>
+    <link rel="stylesheet" href="Style/standard.css" />
+    <link rel="stylesheet" href="Style/fonts.css" />
+    <link rel="stylesheet" href="Style/layout.css" />
+    <link rel="stylesheet" href="Style/header.css" />
+    <link rel="stylesheet" href="Style/menu.css" />
+    <link rel="stylesheet" href="Style/cart.css" />
+    <link rel="stylesheet" href="Style/mobile.css" />
+</head>
 
-    <body>
-        <header>
-            <img
-                src="./assets/icon/menu-icon-white.png"
-                alt="menu_icon_white"
-            />
-            <img
-                id="menuIcon"
-                src="./assets/icon/menu.png"
-                alt="menu_icon_dark"
-            />
-        </header>
+<body>
 
-        <main>
-            <section id="hero">
-                <div id="hero-content">
-                    <img
-                        id="burger-logo"
-                        src="./assets/icon/main-icon.png"
-                        alt="mainBurgerIcon"
-                    />
+    <header id="topHeader">
+        <img src="./assets/icon/menu-icon-white.png" alt="menu_icon_white" />
+        <img id="menuIcon" src="./assets/icon/menu.png" alt="menu_icon_dark" />
+    </header>
 
-                    <div id="headerStartPage">
-                        <div id="headerImgStartPage">
-                            <img
-                                src="./assets/icon/burgerHouseLogo.png"
-                                alt="burgerHouseLogo"
-                            />
-                            <img
-                                src="./assets/icon/rating-icon.png"
-                                alt="rating-icon"
-                            />
-                        </div>
-                        <p>
-                            The best of Burger, Pizza, and greens, all in one
-                            great place.
-                        </p>
-                    </div>
-                </div>
-            </section>
+    <section id="hero">
+        <div id="hero-content">
+            <img id="burger-logo" src="./assets/icon/main-icon.png" alt="mainBurgerIcon" />
+        </div>
+    </section>
 
-            <section id="sectionMenu"></section>
-        </main>
+    <section id="restaurantHeader">
+        <div id="restaurantHeaderContent">
+            <div id="restaurantInfo">
+                <img src="./assets/icon/burgerHouseLogo.png" alt="burgerHouseLogo" />
+                <img src="./assets/icon/rating-icon.png" alt="rating-icon" />
+            </div>
+            <p class="restaurantTagline">The best of Burgers, Pizza, and Greens, all in one great place.</p>
+        </div>
+    </section>
 
-        <footer>
-            <p>
-                <span>© 2026 BurgerHouse</span>
-                <span>Inprint</span>
-                <span>Cookie References</span>
-            </p>
-        </footer>
-        <script type="module" src="script/data.js"></script>
-        <script type="module" src="script/templates.js"></script>
-        <script type="module" src="script/menu.js"></script>
-        <script type="module" src="script/cart.js"></script>
-        <script type="module" src="script/mobile.js"></script>
-        <script type="module" src="script/app.js"></script>
-    </body>
+    <div id="categoryHeaderContainer"></div>
+
+    <main id="layout">
+        <section id="sectionMenu"></section>
+        <div id="basketWrapper"></div>
+    </main>
+
+    <footer>
+        <p>
+            <span>© 2026 BurgerHouse</span>
+            <span>Imprint</span>
+            <span>Cookie References</span>
+        </p>
+    </footer>
+
+    <script type="module" src="script/data.js"></script>
+    <script type="module" src="script/templates.js"></script>
+    <script type="module" src="script/menu.js"></script>
+    <script type="module" src="script/cart.js"></script>
+    <script type="module" src="script/mobile.js"></script>
+    <script type="module" src="script/app.js"></script>
+
+</body>
 </html>

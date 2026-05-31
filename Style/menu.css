@@ -1,58 +1,78 @@
-.foodCategories {
+/* ===========================
+   CATEGORY HEADER (CENTERED)
+   =========================== */
+
+.categoryHeader {
     width: 100%;
-    max-width: 900px;
-    margin: 40px auto;
+    background-color: #e76c1f;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
-.foodCategories header {
+.categoryHeaderContent {
+    width: 900px;
+    max-width: 100%;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 16px;
 }
 
-.headerContentWrapper {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.categoryHeaderContent img {
+    width: 40px;
+    height: 40px;
 }
 
-.headerContentWrapper img {
-    height: 36px;
-}
-
-.headerContentWrapper h1 {
+.categoryHeaderContent h1 {
+    color: white;
     font-size: 28px;
     font-weight: 700;
+    margin: 0;
 }
 
-.foodCategoryMealSection {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+/* ===========================
+   MENU SECTION SPACING
+   =========================== */
+
+#sectionMenu {
+    padding-top: 0;
 }
+
+
+/* ===========================
+   SINGLE MEAL CARD
+   =========================== */
 
 .singleMeal {
+    background: rgba(253, 234, 220, 1);
+    border-radius: 16px;
+    padding: 20px;
     display: flex;
     gap: 20px;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    align-items: flex-start;
 }
 
 .imgMeal {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
+    width: 140px;
+    height: 140px;
     border-radius: 12px;
+    object-fit: cover;
 }
 
 .singleMealContentWrapper {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
 }
+
+
+/* ===========================
+   MEAL HEADER (TITLE + PRICE)
+   =========================== */
 
 .headerSingleMeal {
     display: flex;
@@ -61,6 +81,7 @@
 }
 
 .headerSingleMeal h2 {
+    margin: 0;
     font-size: 20px;
     font-weight: 700;
 }
@@ -70,10 +91,21 @@
     font-weight: 700;
 }
 
+
+/* ===========================
+   MEAL DESCRIPTION
+   =========================== */
+
 .singleMealContentWrapper p {
-    font-size: 14px;
-    color: #555;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.4;
 }
+
+
+/* ===========================
+   ADD BUTTON
+   =========================== */
 
 .buttonWrapper {
     display: flex;
@@ -81,15 +113,36 @@
 }
 
 .buttonWrapper button {
-    background-color: #e76c1f;
+    background: #e76c1f;
     color: white;
     border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
 }
 
 .buttonWrapper button:hover {
-    background-color: #cf5f1b;
+    background: #cf5f1b;
+}
+
+
+/* ===========================
+   SPACING BETWEEN MEALS
+   =========================== */
+
+.singleMeal + .singleMeal {
+    margin-top: 24px;
+}
+
+
+/* ===========================
+   BASKET STICKY ABOVE ALL
+   =========================== */
+
+#basketWrapper {
+    position: sticky;
+    top: 40px;
+    z-index: 9999;
 }

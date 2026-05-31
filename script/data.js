@@ -2,102 +2,102 @@ export const produkte = [
     // BURGER
     {
         id: 1,
-        catagorie: "burger",
+        category: "burger",
         name: "Veggie mushroom burger",
-        price: 14.00,
-        Img: "assets/img/veggie-burger.jpg",
-        Description: "Mixed salad, Tomato, Lettuce, Fried mushrooms"
+        price: 14.0,
+        img: "assets/img/veggie-burger.jpg",
+        description: "Mixed salad, Tomato, Lettuce, Fried mushrooms",
     },
     {
         id: 2,
-        Catagorie: "burger",
+        category: "burger",
         name: "All meat burger",
-        price: 15.00,
-        Img: "assets/img/all-meat-burger.jpg",
-        Description: "Beef, Bacon, Cheese, Tomato, Lettuce"
+        price: 15.0,
+        img: "assets/img/all-meat-burger.jpg",
+        description: "Beef, Bacon, Cheese, Tomato, Lettuce",
     },
     {
         id: 3,
-        catagorie: "burger",
+        category: "burger",
         name: "Beef red burger",
-        price: 14.00,
-        Img: "assets/img/beef-red-burger.jpg",
-        Description: "Beef, Cheese, Tomato, Lettuce, Onion"
+        price: 14.0,
+        img: "assets/img/beef-red-burger.jpg",
+        description: "Beef, Cheese, Tomato, Lettuce, Onion",
     },
     {
         id: 4,
-        catagorie: "burger",
+        category: "burger",
         name: "Big chicken burger",
-        price: 15.00,
-        Img: "assets/img/big-chicken-burger.jpg",
-        Description: "Chicken, Tomato, Lettuce, Cheese, Red onion"
+        price: 15.0,
+        img: "assets/img/big-chicken-burger.jpg",
+        description: "Chicken, Tomato, Lettuce, Cheese, Red onion",
     },
 
     // PIZZA
     {
         id: 5,
-        catagorie: "pizza",
+        category: "pizza",
         name: "Pizza Margherita",
-        price: 11.90,
-        Img: "assets/img/pizza-margherita.jpg",
-        Description: "Tomato sauce, Mozzarella, Basil"
+        price: 11.9,
+        img: "assets/img/pizza-margherita.jpg",
+        description: "Tomato sauce, Mozzarella, Basil",
     },
     {
         id: 6,
-        catagorie: "pizza",
+        category: "pizza",
         name: "Pizza Chorizo",
-        price: 13.00,
-        Img: "assets/img/pizza-chorizo.jpg",
-        Description: "Tomato sauce, Mozzarella, Chorizo"
+        price: 13.0,
+        img: "assets/img/pizza-chorizo.jpg",
+        description: "Tomato sauce, Mozzarella, Chorizo",
     },
     {
         id: 7,
-        catagorie: "pizza",
+        category: "pizza",
         name: "Funghi",
-        price: 12.00,
-        Img: "assets/img/pizza-funghi.jpg",
-        Description: "Tomato sauce, Grated Mushrooms"
+        price: 12.0,
+        img: "assets/img/pizza-funghi.jpg",
+        description: "Tomato sauce, Grated Mushrooms",
     },
     {
         id: 8,
-        catagorie: "pizza",
+        category: "pizza",
         name: "Quattro formaggi with Chicken",
-        price: 14.00,
-        Img: "assets/img/pizza-quattro.jpg",
-        Description: "Mozzarella, Fontina, Gorgonzola, Parmesan, Chicken"
+        price: 14.0,
+        img: "assets/img/pizza-quattro.jpg",
+        description: "Mozzarella, Fontina, Gorgonzola, Parmesan, Chicken",
     },
 
     // SALAD
     {
         id: 9,
-        catagorie: "salad",
+        category: "salad",
         name: "Warm beef arugula salad",
-        price: 16.90,
-        Img: "assets/img/beef-salad.jpg",
-        Description: "Arugula, Cherry tomatoes, Beef, Honey mustard dressing"
+        price: 16.9,
+        img: "assets/img/beef-salad.jpg",
+        description: "Arugula, Cherry tomatoes, Beef, Honey mustard dressing",
     },
     {
         id: 10,
-        catagorie: "salad",
+        category: "salad",
         name: "Mini green salad",
-        price: 7.00,
-        Img: "assets/img/mini-salad.jpg",
-        Description: "Mixed lettuce, Cucumber, Carrots, Peppers, Tomatoes"
+        price: 7.0,
+        img: "assets/img/mini-salad.jpg",
+        description: "Mixed lettuce, Cucumber, Carrots, Peppers, Tomatoes",
     },
     {
         id: 11,
-        catagorie: "salad",
+        category: "salad",
         name: "Green salad with sea food",
-        price: 16.00,
-        Img: "assets/img/green-salad.jpg",
-        Description: "Mixed lettuce, Sea food, Cherry tomatoes, Olive oil dressing"
+        price: 16.0,
+        img: "assets/img/green-salad.jpg",
+        description: "Mixed lettuce, Sea food, Cherry tomatoes, Olive oil dressing",
     },
     {
         id: 12,
-        catagorie: "salad",
+        category: "salad",
         name: "Vegan green salad with tofu",
-        price: 14.00,
-        Img: "assets/img/vegan-salad.jpg",
-        Description: "Mixed lettuce, Cucumber, Carrots, Peppers, Tomatoes, Tofu"
-    }
+        price: 14.0,
+        img: "assets/img/vegan-salad.jpg",
+        description: "Mixed lettuce, Cucumber, Carrots, Peppers, Tomatoes, Tofu",
+    },
 ];

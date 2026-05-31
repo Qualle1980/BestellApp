@@ -1,121 +1,128 @@
-/* Basket Wrapper */
-.basket_wrapper {
-    width: 420px;
-    background-color: rgba(54, 53, 52, 1);
-    padding: 32px 24px;
+/* basket inside main with sticky behavior */
+#basketWrapper {
+    width: 320px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Basket container (NO scrolling here!) */
+#basket {
+    width: 320px;
+    background: rgba(54, 53, 52, 1);
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+    margin-right: -60px;
+
+    position: sticky;
+    top: 40px;
+
     display: flex;
     flex-direction: column;
     gap: 24px;
-    border-radius: 12px;
-    position: sticky;
-    top: 0;
-    height: fit-content;
+
+    max-height: 800px; 
+    overflow: hidden;  
 }
 
-/* Basket Title */
-.basket_title {
-    font-family: "PalanquinDark", sans-serif;
-    font-size: 28px;
-    color: white;
+/* Scrollable article area */
+#basketItems {
+    flex: 1;
+    overflow-y: auto;
 }
 
-/* Basket Empty */
-.basket_empty {
-    font-size: 18px;
-    color: #ccc;
-    text-align: center;
+/* Scrollbar styling */
+#basketItems::-webkit-scrollbar {
+    width: 8px;
 }
 
-/* Basket Items */
-.basket_items {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-/* Basket Item */
-.basket_item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fdeadc;
-    padding: 12px 16px;
+#basketItems::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
 }
 
-/* Basket Item Info */
-.basket_item_info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+#basketItems::-webkit-scrollbar-thumb {
+    background: rgba(231, 195, 173, 1); 
+    border-radius: 10px;
 }
 
-/* Basket Item Name */
-.basket_item_name {
-    font-size: 18px;
-    font-weight: 600;
-    color: #363534;
+#basketItems::-webkit-scrollbar-thumb:hover {
+    background: rgba(231, 195, 173, 0.8); 
 }
 
-/* Basket Item Price */
-.basket_item_price {
-    font-size: 18px;
-    font-weight: 600;
-    white-space: nowrap;
-    color: #363534;
+
+/* Basket title */
+#basket h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
 }
 
-/* Basket Controls */
-.basket_controls {
+/* Single basket item */
+.basketItem {
+    background: rgba(253, 234, 220, 1);
+    padding: 16px;
+    border-radius: 12px;
+    color: black;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+/* Quantity controls */
+.basketControls {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-/* Basket Button */
-.basket_btn {
+.basketControls button {
     width: 28px;
     height: 28px;
     border-radius: 50%;
     border: none;
-    background-color: #ff7a00;
-    color: white;
+    background: rgba(255, 255, 255, 0.15);
+    color: black;
     font-size: 18px;
     cursor: pointer;
 }
 
-/* Basket Summary */
-.basket_summary {
+.basketControls button:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Summary area  */
+#basketSummary {
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding-top: 16px;
-    border-top: 2px solid #ff7a00;
+    gap: 6px;
+    font-size: 15px;
 }
 
-/* Basket Summary Row */
-.basket_summary_row {
-    display: flex;
-    justify-content: space-between;
+/* Total line */
+#basketTotal h3 {
+    margin: 0;
     font-size: 18px;
-    color: white;
-}
-
-/* Basket Total */
-.basket_total {
-    font-size: 22px;
     font-weight: 700;
 }
 
-/* Basket Buy Button */
-.basket_buy_btn {
-    background-color: #ff7a00;
+/* Buy button */
+#buyNowBtn {
+    background: #e76c1f;
     color: white;
-    border: none;
-    padding: 14px 20px;
+    padding: 16px;
     border-radius: 12px;
-    font-size: 20px;
-    font-family: "PalanquinDark", sans-serif;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
     margin-top: 12px;
+}
+
+#buyNowBtn:hover {
+    background: #cf5f1b;
 }

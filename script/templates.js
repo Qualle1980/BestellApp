@@ -17,7 +17,9 @@ export function createMealCard(product) {
             <div class="singleMealContentWrapper">
                 <div class="headerSingleMeal">
                     <h2>${product.name}</h2>
-                    <h2 class="mealHeaderPrice">${product.price.toFixed(2)} €</h2>
+                    <h2 class="mealHeaderPrice">
+                        ${product.price.toLocaleString("de-DE", { minimumFractionDigits: 2 })} €
+                    </h2>
                 </div>
 
                 <p>${product.description}</p>
@@ -44,4 +46,3 @@ export function templateBasket() {
         </div>
     `;
 }
-

@@ -2,6 +2,14 @@ import { produkte } from "./data.js";
 
 let basket = [];
 
+/* cental format price */
+function formatPrice(value) {
+    return value.toLocaleString("de-DE", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
 /* Add product to basket */
 export function addToBasket(id) {
     const product = produkte.find(p => p.id === id);
@@ -44,7 +52,7 @@ function renderBasket() {
                     <button onclick="changeAmount(${item.id}, 1)">+</button>
                 </div>
 
-                <span>${itemTotal.toFixed(2)} €</span>
+                <span>${formatPrice(itemTotal)} €</span>
             </div>
         `;
     });
@@ -54,13 +62,26 @@ function renderBasket() {
 
     /* Update summary area */
     basketTotal.innerHTML = `
-        <div>Subtotal: ${subtotal.toFixed(2)} €</div>
-        <div>Delivery: ${delivery.toFixed(2)} €</div>
-        <h3>Total: ${total.toFixed(2)} €</h3>
+        <div class="summaryRow">
+            <span>Subtotal:</span>
+            <span>${formatPrice(subtotal)} €</span>
+        </div>
+
+        <div class="summaryRow">
+            <span>Delivery:</span>
+            <span>${formatPrice(delivery)} €</span>
+        </div>
+
+        <div class="summaryDivider"></div>
+
+        <h3>
+            <span>Total:</span>
+            <span>${formatPrice(total)} €</span>
+        </h3>
     `;
 
     /* Update Buy Now button */
-    buyNowBtn.innerText = `Buy now (${total.toFixed(2)} €)`;
+    buyNowBtn.innerText = `Buy now (${formatPrice(total)} €)`;
 }
 
 /* Change amount of a product */

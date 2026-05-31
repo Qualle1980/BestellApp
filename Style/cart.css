@@ -7,7 +7,8 @@
 
 /* Basket container (NO scrolling here!) */
 #basket {
-    width: 320px;
+    width: 500px;
+    height: 800px;
     background: rgba(54, 53, 52, 1);
     border-radius: 16px;
     padding: 24px;
@@ -56,6 +57,9 @@
     font-size: 22px;
     font-weight: 700;
     margin: 0;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 /* Single basket item */
@@ -108,6 +112,8 @@
     margin: 0;
     font-size: 18px;
     font-weight: 700;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Buy button */

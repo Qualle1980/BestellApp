@@ -1,10 +1,10 @@
 import { produkte } from "./data.js";
-import { formatPrice } from "./utils.js";
+import { templateBasketItem, templateBasketSummary } from "./templates.js";
 
 let basket = [];
 
 function isMobileBasketView() {
-    return window.innerWidth <= 1024;
+    return window.innerWidth <= 1244;
 }
 
 function openBasketPopup() {
@@ -139,9 +139,23 @@ function setupAddButtons() {
     }
 }
 
+function removeFromBasket(id) {
+    const newBasket = [];
+
+    for (let j = 0; j < basket.length; j++) {
+        if (basket[j].id !== id) {
+            newBasket.push(basket[j]);
+        }
+    }
+
+    basket = newBasket;
+    renderBasket();
+}
+
 function setupBasketButtons() {
     const minusButtons = document.querySelectorAll(".qtyMinus");
     const plusButtons = document.querySelectorAll(".qtyPlus");
+    const removeButtons = document.querySelectorAll(".qtyRemove");
 
     for (let i = 0; i < minusButtons.length; i++) {
         minusButtons[i].addEventListener("click", function () {
@@ -156,78 +170,72 @@ function setupBasketButtons() {
             changeAmount(id, 1);
         });
     }
+
+    for (let k = 0; k < removeButtons.length; k++) {
+        removeButtons[k].addEventListener("click", function () {
+            removeFromBasket(Number(this.dataset.id));
+        });
+    }
 }
 
-function renderBasket() {
-    const basketItems = document.getElementById("basketItems");
-    const basketTotal = document.getElementById("basketTotal");
-    const buyNowBtn = document.getElementById("buyNowBtn");
-    const mobileBasketCount = document.getElementById("mobileBasketCount");
-
-    basketItems.innerHTML = "";
+function calcBasketTotals() {
     let subtotal = 0;
     let itemCount = 0;
 
     for (let i = 0; i < basket.length; i++) {
-        const item = basket[i];
-        const itemTotal = item.price * item.amount;
-        subtotal += itemTotal;
-        itemCount += item.amount;
-
-        basketItems.innerHTML += `
-            <div class="basketItem">
-                <span>${item.name}</span>
-
-                <div class="basketControls">
-                    <button type="button" class="qtyMinus" data-id="${item.id}">-</button>
-                    <span>${item.amount}</span>
-                    <button type="button" class="qtyPlus" data-id="${item.id}">+</button>
-                </div>
-
-                <span>${formatPrice(itemTotal)} €</span>
-            </div>
-        `;
+        subtotal += basket[i].price * basket[i].amount;
+        itemCount += basket[i].amount;
     }
 
     const delivery = subtotal > 0 ? 4.99 : 0;
-    const total = subtotal + delivery;
-    mobileBasketCount.innerText = itemCount;
 
-    basketTotal.innerHTML = `
-        <div class="summaryRow">
-            <span>Subtotal:</span>
-            <span>${formatPrice(subtotal)} €</span>
-        </div>
+    return { subtotal, itemCount, delivery, total: subtotal + delivery };
+}
 
-        <div class="summaryRow">
-            <span>Delivery:</span>
-            <span>${formatPrice(delivery)} €</span>
-        </div>
+function buildBasketItemsHtml() {
+    let html = "";
 
-        <div class="summaryDivider"></div>
+    for (let i = 0; i < basket.length; i++) {
+        const item = basket[i];
+        html += templateBasketItem(item, item.price * item.amount);
+    }
 
-        <h3>
-            <span>Total:</span>
-            <span>${formatPrice(total)} €</span>
-        </h3>
-    `;
+    return html;
+}
 
-    buyNowBtn.onclick = function () {
-        if (total === 0) {
-            return;
-        }
+function resetAddButtons() {
+    const addButtons = document.querySelectorAll(".addBtn");
 
-        closeBasketPopup();
-        showOrderPopup();
+    for (let k = 0; k < addButtons.length; k++) {
+        addButtons[k].innerText = "Add to basket";
+        addButtons[k].classList.remove("added");
+    }
+}
 
-        basket = [];
-        renderBasket();
+function handleBuyNow(total) {
+    if (total === 0) {
+        return;
+    }
 
-        const addButtons = document.querySelectorAll(".addBtn");
-        for (let k = 0; k < addButtons.length; k++) {
-            addButtons[k].innerText = "Add to basket";
-            addButtons[k].classList.remove("added");
-        }
+    closeBasketPopup();
+    showOrderPopup();
+    basket = [];
+    renderBasket();
+    resetAddButtons();
+}
+
+function renderBasket() {
+    const totals = calcBasketTotals();
+
+    document.getElementById("basketItems").innerHTML = buildBasketItemsHtml();
+    document.getElementById("mobileBasketCount").innerText = totals.itemCount;
+    document.getElementById("basketTotal").innerHTML = templateBasketSummary(
+        totals.subtotal,
+        totals.delivery,
+        totals.total
+    );
+    document.getElementById("buyNowBtn").onclick = function () {
+        handleBuyNow(totals.total);
     };
 
     setupBasketButtons();

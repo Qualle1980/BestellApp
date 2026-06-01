@@ -1,4 +1,4 @@
-@media (max-width: 1024px) {
+@media (max-width: 1244px) {
     body.noScroll {
         overflow: hidden;
     }
@@ -20,8 +20,10 @@
     }
 
     #sectionMenu {
+        display: flex;
+        flex-direction: column;
         max-width: 100%;
-        gap: 28px;
+        gap: 24px;
         padding-top: 0;
     }
 
@@ -187,7 +189,7 @@
     }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1245px) {
     #mobileNav {
         display: none;
     }

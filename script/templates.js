@@ -37,6 +37,43 @@ export function createMealCard(product) {
     `;
 }
 
+export function templateBasketItem(item, itemTotal) {
+    const minusOrRemove =
+        item.amount === 1
+            ? `<button type="button" class="qtyRemove" data-id="${item.id}" aria-label="Remove item">🗑️</button>`
+            : `<button type="button" class="qtyMinus" data-id="${item.id}" aria-label="Decrease amount">-</button>`;
+
+    return `
+        <div class="basketItem">
+            <span class="basketItemName">${item.name}</span>
+            <div class="basketControls">
+                ${minusOrRemove}
+                <span class="qtyAmount">${item.amount}</span>
+                <button type="button" class="qtyPlus" data-id="${item.id}" aria-label="Increase amount">+</button>
+            </div>
+            <span class="basketItemPrice">${formatPrice(itemTotal)} €</span>
+        </div>
+    `;
+}
+
+export function templateBasketSummary(subtotal, delivery, total) {
+    return `
+        <div class="summaryRow">
+            <span>Subtotal:</span>
+            <span>${formatPrice(subtotal)} €</span>
+        </div>
+        <div class="summaryRow">
+            <span>Delivery:</span>
+            <span>${formatPrice(delivery)} €</span>
+        </div>
+        <div class="summaryDivider"></div>
+        <h3>
+            <span>Total:</span>
+            <span>${formatPrice(total)} €</span>
+        </h3>
+    `;
+}
+
 export function templateBasket() {
     return `
         <div id="basketOverlay"></div>

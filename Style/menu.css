@@ -136,17 +136,3 @@
 }
 
 
-/*MEAL SPACING */
-
-.singleMeal + .singleMeal {
-    margin-top: 24px;
-}
-
-
-/*BASKET STICKY */
-
-#basketWrapper {
-    position: sticky;
-    top: 40px;
-    z-index: 9999;
-}

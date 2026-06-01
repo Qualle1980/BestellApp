@@ -28,12 +28,14 @@ main {
 
 /* Basket Section */
 #basketWrapper {
-    width: 320px;
+    width: 380px;
+    flex-shrink: 0;
     display: flex;
     justify-content: flex-end;
     position: sticky;
     top: 40px;
-    z-index: 9999;
+    align-self: flex-start;
+    z-index: 10;
 }
 
 /* Summary Row */
@@ -49,4 +51,25 @@ main {
     height: 1px;
     background: rgba(255, 255, 255, 0.25);
     margin: 8px 0 4px 0;
+}
+
+/* Desktop: Warenkorb rechts, gleicher Abstand zwischen allen Karten */
+@media (min-width: 1245px) {
+    #layout {
+        gap: 48px;
+    }
+
+    #sectionMenu {
+        flex: 1;
+        min-width: 0;
+        max-width: none;
+        gap: 24px;
+    }
+
+    .singleMeal {
+        width: calc(100% - 110px);
+        max-width: 713px;
+        margin-left: 110px;
+        box-sizing: border-box;
+    }
 }

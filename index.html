@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>BurgerHouse – BestellApp</title>
+        <link rel="icon" type="image/png" href="./assets/icon/orders.png" />
 
         <link rel="stylesheet" href="Style/standard.css" />
         <link rel="stylesheet" href="Style/fonts.css" />
@@ -77,6 +78,30 @@
                 <span>Cookie References</span>
             </p>
         </footer>
+
+        <nav id="mobileNav" aria-label="Mobile navigation">
+            <a href="#topHeader" aria-label="Home">
+                <img src="./assets/icon/home-icon-white.png" alt="" />
+            </a>
+            <a href="#restaurantHeader" aria-label="Profile">
+                <img src="./assets/icon/person-icon-white.png" alt="" />
+            </a>
+            <a href="#sectionMenu" aria-label="Menu">
+                <img src="./assets/icon/orders.png" alt="" />
+            </a>
+        </nav>
+
+        <div id="orderOverlay" class="hidden">
+            <div id="orderPopup">
+                <button id="closeOrderPopup" type="button">×</button>
+                <img
+                    src="./assets/icon/delivery-truck-icon.png"
+                    alt="delivery"
+                />
+                <h2>Order confirmed!</h2>
+                <p>Your food is on the way!</p>
+            </div>
+        </div>
 
         <script type="module" src="script/app.js"></script>
     </body>

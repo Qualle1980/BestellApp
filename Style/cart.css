@@ -69,12 +69,16 @@
     padding: 16px;
     border-radius: 12px;
     color: black;
-    display: grid;
-    grid-template-columns: 1fr auto auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 12px;
     margin-bottom: 5px;
     font-size: 15px;
+}
+
+.basketItem > span:first-child {
+    flex: 1;
 }
 
 /* Quantity controls */
@@ -122,6 +126,7 @@
     background: #e76c1f;
     color: white;
     padding: 16px;
+    border: 0;
     border-radius: 12px;
     text-align: center;
     font-size: 18px;
@@ -133,6 +138,12 @@
 #buyNowBtn:hover {
     background: #cf5f1b;
 }
+
+#basketOverlay,
+#basketCloseBtn,
+#mobileBasketBtn {
+    display: none;
+}
 /* ================================
    ORDER CONFIRMATION OVERLAY
    (NO ANIMATION)
@@ -140,7 +151,10 @@
 
 #orderOverlay {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.65);
     display: flex;
     justify-content: center;

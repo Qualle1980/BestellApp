@@ -4,6 +4,11 @@ import { templateCategoryHeader, createMealCard, templateBasket } from "./templa
 /* Render basket container */
 document.getElementById("basketWrapper").innerHTML = templateBasket();
 
+/* Cart icon belongs in the mobile footer nav */
+document
+    .getElementById("mobileNav")
+    .appendChild(document.getElementById("mobileBasketBtn"));
+
 /* Menu container */
 const sectionMenu = document.getElementById("sectionMenu");
 
@@ -27,18 +32,20 @@ const categories = [
 ];
 
 /* Render menu grouped by category */
-categories.forEach(category => {
-    /* Insert category header */
+for (let c = 0; c < categories.length; c++) {
+    const category = categories[c];
+
     sectionMenu.insertAdjacentHTML(
         "beforeend",
         templateCategoryHeader(category.icon, category.label)
     );
 
-    /* Filter products belonging to this category */
-    const filtered = produkte.filter(p => p.category === category.name);
-
-    /* Render all meals inside this category */
-    filtered.forEach(product => {
-        sectionMenu.insertAdjacentHTML("beforeend", createMealCard(product));
-    });
-});
+    for (let p = 0; p < produkte.length; p++) {
+        if (produkte[p].category === category.name) {
+            sectionMenu.insertAdjacentHTML(
+                "beforeend",
+                createMealCard(produkte[p])
+            );
+        }
+    }
+}

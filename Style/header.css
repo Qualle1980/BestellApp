@@ -66,8 +66,10 @@ header img {
 #burger-logo {
     position: absolute;
     bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
     width: 180px;
     height: 180px;
     border-radius: 50%;
@@ -78,8 +80,8 @@ header img {
 #headerStartPage {
     position: absolute;
     bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
     text-align: center;
     width: 100%;
     color: white;

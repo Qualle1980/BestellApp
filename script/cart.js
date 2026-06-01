@@ -1,58 +1,81 @@
 import { produkte } from "./data.js";
+import { formatPrice } from "./utils.js";
 
 let basket = [];
 
-/* Price Formatter */
-function formatPrice(value) {
-    return value.toLocaleString("de-DE", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+function isMobileBasketView() {
+    return window.innerWidth <= 1024;
+}
+
+function openBasketPopup() {
+    if (!isMobileBasketView()) {
+        return;
+    }
+
+    document.getElementById("basketWrapper").classList.add("basketPopupOpen");
+    document.body.classList.add("noScroll");
+}
+
+function closeBasketPopup() {
+    const basketWrapper = document.getElementById("basketWrapper");
+    if (!basketWrapper) {
+        return;
+    }
+
+    basketWrapper.classList.remove("basketPopupOpen");
+    document.body.classList.remove("noScroll");
+}
+
+function setupBasketPopupControls() {
+    document.getElementById("mobileBasketBtn").addEventListener("click", openBasketPopup);
+    document.getElementById("basketCloseBtn").addEventListener("click", closeBasketPopup);
+    document.getElementById("basketOverlay").addEventListener("click", closeBasketPopup);
+
+    window.addEventListener("resize", function () {
+        if (!isMobileBasketView()) {
+            closeBasketPopup();
+        }
     });
 }
 
-/* Create Order Overlay (JS Only) */
-function createOrderOverlay() {
-    const overlay = document.createElement("div");
-    overlay.id = "orderOverlay";
-    overlay.classList.add("hidden");
-
-    overlay.innerHTML = `
-        <div id="orderPopup">
-            <button id="closeOrderPopup">×</button>
-            <img src="./assets/icon/delivery-truck-icon.png" alt="delivery">
-            <h2>Order confirmed!</h2>
-            <p>Your food is on the way!</p>
-        </div>
-    `;
-
-    document.body.appendChild(overlay);
+function setupOrderOverlay() {
+    const overlay = document.getElementById("orderOverlay");
 
     document.getElementById("closeOrderPopup").addEventListener("click", closeOrderPopup);
-
-    document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeOrderPopup();
+    overlay.addEventListener("click", function (event) {
+        if (event.target === overlay) {
+            closeOrderPopup();
+        }
     });
 }
 
-createOrderOverlay();
-
-/* Show / Close Popup */
 function showOrderPopup() {
-    const overlay = document.getElementById("orderOverlay");
-    overlay.classList.remove("hidden");
-
+    document.getElementById("orderOverlay").classList.remove("hidden");
     setTimeout(closeOrderPopup, 5000);
 }
 
 function closeOrderPopup() {
-    const overlay = document.getElementById("orderOverlay");
-    overlay.classList.add("hidden");
+    document.getElementById("orderOverlay").classList.add("hidden");
 }
 
-/* Add Product To Basket */
-export function addToBasket(id) {
-    const product = produkte.find(p => p.id === id);
-    const existing = basket.find(item => item.id === id);
+function addToBasket(id) {
+    let product = null;
+
+    for (let i = 0; i < produkte.length; i++) {
+        if (produkte[i].id === id) {
+            product = produkte[i];
+            break;
+        }
+    }
+
+    let existing = null;
+
+    for (let j = 0; j < basket.length; j++) {
+        if (basket[j].id === id) {
+            existing = basket[j];
+            break;
+        }
+    }
 
     if (existing) {
         existing.amount++;
@@ -67,43 +90,108 @@ export function addToBasket(id) {
 
     renderBasket();
 
-    const btn = document.getElementById(`btn-${id}`);
+    const btn = document.getElementById("btn-" + id);
     if (btn) {
         btn.innerText = "Added";
         btn.classList.add("added");
     }
 }
 
-/* Render Basket */
+function changeAmount(id, change) {
+    let item = null;
+
+    for (let i = 0; i < basket.length; i++) {
+        if (basket[i].id === id) {
+            item = basket[i];
+            break;
+        }
+    }
+
+    if (!item) {
+        return;
+    }
+
+    item.amount += change;
+
+    if (item.amount <= 0) {
+        const newBasket = [];
+
+        for (let j = 0; j < basket.length; j++) {
+            if (basket[j].id !== id) {
+                newBasket.push(basket[j]);
+            }
+        }
+
+        basket = newBasket;
+    }
+
+    renderBasket();
+}
+
+function setupAddButtons() {
+    const buttons = document.querySelectorAll(".addBtn");
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", function () {
+            const id = Number(this.dataset.id);
+            addToBasket(id);
+        });
+    }
+}
+
+function setupBasketButtons() {
+    const minusButtons = document.querySelectorAll(".qtyMinus");
+    const plusButtons = document.querySelectorAll(".qtyPlus");
+
+    for (let i = 0; i < minusButtons.length; i++) {
+        minusButtons[i].addEventListener("click", function () {
+            const id = Number(this.dataset.id);
+            changeAmount(id, -1);
+        });
+    }
+
+    for (let j = 0; j < plusButtons.length; j++) {
+        plusButtons[j].addEventListener("click", function () {
+            const id = Number(this.dataset.id);
+            changeAmount(id, 1);
+        });
+    }
+}
+
 function renderBasket() {
     const basketItems = document.getElementById("basketItems");
     const basketTotal = document.getElementById("basketTotal");
     const buyNowBtn = document.getElementById("buyNowBtn");
+    const mobileBasketCount = document.getElementById("mobileBasketCount");
 
     basketItems.innerHTML = "";
     let subtotal = 0;
+    let itemCount = 0;
 
-    basket.forEach(item => {
+    for (let i = 0; i < basket.length; i++) {
+        const item = basket[i];
         const itemTotal = item.price * item.amount;
         subtotal += itemTotal;
+        itemCount += item.amount;
 
         basketItems.innerHTML += `
             <div class="basketItem">
                 <span>${item.name}</span>
 
                 <div class="basketControls">
-                    <button onclick="changeAmount(${item.id}, -1)">-</button>
+                    <button type="button" class="qtyMinus" data-id="${item.id}">-</button>
                     <span>${item.amount}</span>
-                    <button onclick="changeAmount(${item.id}, 1)">+</button>
+                    <button type="button" class="qtyPlus" data-id="${item.id}">+</button>
                 </div>
 
                 <span>${formatPrice(itemTotal)} €</span>
             </div>
         `;
-    });
+    }
 
     const delivery = subtotal > 0 ? 4.99 : 0;
     const total = subtotal + delivery;
+    mobileBasketCount.innerText = itemCount;
 
     basketTotal.innerHTML = `
         <div class="summaryRow">
@@ -124,34 +212,28 @@ function renderBasket() {
         </h3>
     `;
 
-    buyNowBtn.onclick = () => {
-        if (total === 0) return;
+    buyNowBtn.onclick = function () {
+        if (total === 0) {
+            return;
+        }
 
+        closeBasketPopup();
         showOrderPopup();
 
         basket = [];
         renderBasket();
 
-        document.querySelectorAll(".addBtn").forEach(btn => {
-            btn.innerText = "Add to basket";
-            btn.classList.remove("added");
-        });
+        const addButtons = document.querySelectorAll(".addBtn");
+        for (let k = 0; k < addButtons.length; k++) {
+            addButtons[k].innerText = "Add to basket";
+            addButtons[k].classList.remove("added");
+        }
     };
+
+    setupBasketButtons();
 }
 
-/* Change Amount */
-window.changeAmount = function (id, change) {
-    const item = basket.find(i => i.id === id);
-
-    if (!item) return;
-
-    item.amount += change;
-
-    if (item.amount <= 0) {
-        basket = basket.filter(i => i.id !== id);
-    }
-
-    renderBasket();
-};
-
-window.addToBasket = addToBasket;
+setupOrderOverlay();
+setupBasketPopupControls();
+setupAddButtons();
+renderBasket();

@@ -6,6 +6,7 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
+    scrollbar-width: none;
 
 }
 
@@ -28,3 +29,9 @@ img {
 html, body {
     overflow-x: hidden;
 }
+/*scrollbar*/
+*::-webkit-scrollbar {
+    display: none;
+}
+
+

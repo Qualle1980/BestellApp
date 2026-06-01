@@ -72,23 +72,34 @@
 }
 
 
-/*MEAL HEADER */
+/* MEAL TITLE & PRICE */
 
-.headerSingleMeal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.headerSingleMeal h2 {
+.mealTitle {
     margin: 0;
     font-size: 24px;
     font-weight: 600;
+    padding-right: 90px;
 }
 
-.mealHeaderPrice {
+.singleMealContentWrapper {
+    position: relative;
+}
+
+.mealPrice {
     font-size: 20px;
     font-weight: 700;
+}
+
+.mealFooter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mealFooter .mealPrice {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 

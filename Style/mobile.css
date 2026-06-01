@@ -1,0 +1,362 @@
+@media (max-width: 1024px) {
+    body.noScroll {
+        overflow: hidden;
+    }
+
+    header {
+        height: 92px;
+        padding: 0 32px;
+    }
+
+    header img {
+        height: 54px;
+    }
+
+    #layout {
+        max-width: none;
+        width: 100%;
+        padding: 32px 24px 112px;
+        display: block;
+    }
+
+    #sectionMenu {
+        max-width: 100%;
+        gap: 28px;
+        padding-top: 0;
+    }
+
+    .categoryHeader {
+        width: 100vw;
+        height: 68px;
+        margin: 44px 0 22px;
+        margin-left: calc(50% - 50vw);
+        top: 0;
+    }
+
+    .categoryHeaderContent {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        margin-left: 0;
+    }
+
+    .categoryHeaderContent img {
+        width: 74px;
+        height: 76px;
+    }
+
+    .categoryHeaderContent h1 {
+        font-size: 32px;
+        line-height: 1;
+    }
+
+    .singleMeal {
+        width: 100%;
+        height: auto;
+        min-height: 154px;
+        margin-left: 0;
+    }
+
+    #basketWrapper {
+        width: auto;
+        display: block;
+        position: static;
+        z-index: 10000;
+    }
+
+    #basketWrapper #basket {
+        display: none;
+    }
+
+    #basketWrapper.basketPopupOpen #basket {
+        width: 90vw;
+        max-width: 560px;
+        height: 90vh;
+        max-height: 90vh;
+        padding: 28px 22px 22px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        display: flex;
+        z-index: 10002;
+    }
+
+    #basketWrapper.basketPopupOpen #basketOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: rgba(0, 0, 0, 0.58);
+        z-index: 10001;
+    }
+
+    #basketCloseBtn {
+        width: 34px;
+        height: 34px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        display: none;
+        border: 0;
+        border-radius: 50%;
+        background: #ffffff;
+        color: #363534;
+        font-size: 28px;
+        line-height: 30px;
+        cursor: pointer;
+        z-index: 10003;
+    }
+
+    #basketWrapper.basketPopupOpen #basketCloseBtn {
+        display: block;
+    }
+
+    #mobileNav {
+        height: 78px;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 9998;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 16px;
+        padding: 0 20px;
+        background: #363534;
+        box-shadow: 0 -10px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    #mobileNav a,
+    #mobileBasketBtn {
+        flex: 1;
+        max-width: 72px;
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        position: relative;
+    }
+
+    #mobileNav img,
+    #mobileBasketBtn img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+
+    #mobileBasketBtn {
+        z-index: 9999;
+    }
+
+    footer {
+        margin-bottom: 78px;
+    }
+
+    footer p {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    #mobileBasketCount {
+        min-width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        margin-left: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: #e76c1f;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1;
+        padding: 0 5px;
+    }
+}
+
+@media (min-width: 1025px) {
+    #mobileNav {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    html,
+    body {
+        background: #fff;
+    }
+
+    body {
+        width: 100%;
+        max-width: none;
+        min-height: 100%;
+        margin: 0;
+        background: #fff;
+    }
+
+    header {
+        height: 92px;
+        padding: 0 16px;
+    }
+
+    header img {
+        height: 48px;
+    }
+
+    #menuIcon {
+        display: none;
+    }
+
+    #hero {
+        width: auto;
+        height: 348px;
+        margin: 24px 16px 42px;
+        border-radius: 14px;
+        background-position: center;
+    }
+
+    #burger-logo {
+        width: 138px;
+        height: 138px;
+        bottom: -70px;
+        border: 12px solid #fdeadc;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+    }
+
+    #restaurantHeader {
+        padding: 30px 24px 34px;
+    }
+
+    #restaurantHeaderContent {
+        gap: 12px;
+    }
+
+    #restaurantInfo {
+        flex-direction: column-reverse;
+        gap: 16px;
+    }
+
+    #restaurantInfo img:first-child {
+        height: 52px;
+    }
+
+    #restaurantInfo img:last-child {
+        height: 34px;
+    }
+
+    .restaurantTagline {
+        max-width: 330px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.16;
+    }
+
+    #layout {
+        padding: 0 16px 118px;
+    }
+
+    .categoryHeader {
+        width: 100vw;
+        height: 60px;
+        margin: 58px 0 16px;
+        margin-left: calc(50% - 50vw);
+    }
+
+    .categoryHeaderContent {
+        position: relative;
+    }
+
+    .categoryHeaderContent img {
+        width: 74px;
+        height: 78px;
+        position: absolute;
+        top: -74px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .categoryHeaderContent h1 {
+        max-width: 100%;
+        padding: 0 16px;
+        overflow: hidden;
+        font-size: 30px;
+        line-height: 1.05;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .singleMeal {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 10px;
+    }
+
+    .imgMeal {
+        width: 100%;
+        height: 120px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    .singleMealContentWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .mealTitle {
+        padding-right: 0;
+        font-size: 24px;
+        line-height: 1.05;
+    }
+
+    .singleMealContentWrapper p {
+        font-size: 16px;
+        line-height: 1.2;
+    }
+
+    .mealFooter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-top: 4px;
+    }
+
+    .mealFooter .mealPrice {
+        position: static;
+        font-size: 21px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .buttonWrapper {
+        display: flex;
+        justify-content: flex-end;
+        flex-shrink: 0;
+    }
+
+    #orderPopup {
+        width: 90%;
+        max-width: 340px;
+    }
+}

@@ -25,6 +25,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    margin-left: 170px;
 }
 
 .categoryHeaderContent img {
@@ -60,11 +61,14 @@
     display: flex;
     gap: 20px;
     align-items: flex-start;
+    width: 713px;
+    height: 150px;
+    margin-left: 110px;
 }
 
 .imgMeal {
-    width: 140px;
-    height: 140px;
+    width: 207px;
+    height: 121px;
     border-radius: 12px;
     object-fit: cover;
 }
@@ -89,8 +93,8 @@
 
 .headerSingleMeal h2 {
     margin: 0;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .mealHeaderPrice {
@@ -105,8 +109,9 @@
 
 .singleMealContentWrapper p {
     margin: 0;
-    font-size: 15px;
-    line-height: 1.4;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
 }
 
 

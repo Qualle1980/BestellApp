@@ -25,7 +25,12 @@ export function createMealCard(product) {
                 <p>${product.description}</p>
 
                 <div class="buttonWrapper">
-                    <button onclick="addToBasket(${product.id})">Add to basket</button>
+                    <button 
+                        class="addBtn"
+                        id="btn-${product.id}"
+                        onclick="addToBasket(${product.id})">
+                        Add to basket
+                    </button>
                 </div>
             </div>
         </section>

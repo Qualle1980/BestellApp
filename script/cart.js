@@ -2,7 +2,7 @@ import { produkte } from "./data.js";
 
 let basket = [];
 
-/* cental format price */
+/* Price Formatter */
 function formatPrice(value) {
     return value.toLocaleString("de-DE", {
         minimumFractionDigits: 2,
@@ -10,7 +10,46 @@ function formatPrice(value) {
     });
 }
 
-/* Add product to basket */
+/* Create Order Overlay (JS Only) */
+function createOrderOverlay() {
+    const overlay = document.createElement("div");
+    overlay.id = "orderOverlay";
+    overlay.classList.add("hidden");
+
+    overlay.innerHTML = `
+        <div id="orderPopup">
+            <button id="closeOrderPopup">×</button>
+            <img src="./assets/icon/delivery-truck-icon.png" alt="delivery">
+            <h2>Order confirmed!</h2>
+            <p>Your food is on the way!</p>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    document.getElementById("closeOrderPopup").addEventListener("click", closeOrderPopup);
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeOrderPopup();
+    });
+}
+
+createOrderOverlay();
+
+/* Show / Close Popup */
+function showOrderPopup() {
+    const overlay = document.getElementById("orderOverlay");
+    overlay.classList.remove("hidden");
+
+    setTimeout(closeOrderPopup, 5000);
+}
+
+function closeOrderPopup() {
+    const overlay = document.getElementById("orderOverlay");
+    overlay.classList.add("hidden");
+}
+
+/* Add Product To Basket */
 export function addToBasket(id) {
     const product = produkte.find(p => p.id === id);
     const existing = basket.find(item => item.id === id);
@@ -27,9 +66,15 @@ export function addToBasket(id) {
     }
 
     renderBasket();
+
+    const btn = document.getElementById(`btn-${id}`);
+    if (btn) {
+        btn.innerText = "Added";
+        btn.classList.add("added");
+    }
 }
 
-/* Render basket content */
+/* Render Basket */
 function renderBasket() {
     const basketItems = document.getElementById("basketItems");
     const basketTotal = document.getElementById("basketTotal");
@@ -60,7 +105,6 @@ function renderBasket() {
     const delivery = subtotal > 0 ? 4.99 : 0;
     const total = subtotal + delivery;
 
-    /* Update summary area */
     basketTotal.innerHTML = `
         <div class="summaryRow">
             <span>Subtotal:</span>
@@ -80,11 +124,22 @@ function renderBasket() {
         </h3>
     `;
 
-    /* Update Buy Now button */
-    buyNowBtn.innerText = `Buy now (${formatPrice(total)} €)`;
+    buyNowBtn.onclick = () => {
+        if (total === 0) return;
+
+        showOrderPopup();
+
+        basket = [];
+        renderBasket();
+
+        document.querySelectorAll(".addBtn").forEach(btn => {
+            btn.innerText = "Add to basket";
+            btn.classList.remove("added");
+        });
+    };
 }
 
-/* Change amount of a product */
+/* Change Amount */
 window.changeAmount = function (id, change) {
     const item = basket.find(i => i.id === id);
 

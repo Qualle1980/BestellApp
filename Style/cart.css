@@ -132,3 +132,69 @@
 #buyNowBtn:hover {
     background: #cf5f1b;
 }
+/* ================================
+   ORDER CONFIRMATION OVERLAY
+   (NO ANIMATION)
+================================ */
+
+#orderOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#orderOverlay.hidden {
+    display: none;
+}
+
+#orderPopup {
+    background: #1f1f1f;
+    color: white;
+    padding: 32px 28px;
+    border-radius: 14px;
+    width: 320px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+#orderPopup img {
+    width: 80px;
+    height: 57px;
+    margin: 0 auto 18px auto;
+    display: block;
+}
+
+#orderPopup h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+#orderPopup p {
+    font-size: 15px;
+    opacity: 0.85;
+}
+
+/* Close button (X) */
+#closeOrderPopup {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+#closeOrderPopup:hover {
+    opacity: 1;
+}

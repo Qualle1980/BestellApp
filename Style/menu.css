@@ -1,10 +1,5 @@
 
-
-
-
-/* ===========================
-   CATEGORY HEADER
-   =========================== */
+/* CATEGORY HEADER*/
 
 .categoryHeader {
     width: 1920px;
@@ -41,18 +36,14 @@
 }
 
 
-/* ===========================
-   MENU SECTION SPACING
-   =========================== */
+/* MENU SECTION SPACING */
 
 #sectionMenu {
     padding-top: 0;
 }
 
 
-/* ===========================
-   MEAL CARD
-   =========================== */
+/* MEAL CARD */
 
 .singleMeal {
     background: rgba(253, 234, 220, 1);
@@ -81,9 +72,7 @@
 }
 
 
-/* ===========================
-   MEAL HEADER
-   =========================== */
+/*MEAL HEADER */
 
 .headerSingleMeal {
     display: flex;
@@ -103,9 +92,7 @@
 }
 
 
-/* ===========================
-   MEAL DESCRIPTION
-   =========================== */
+/*MEAL DESCRIPTION */
 
 .singleMealContentWrapper p {
     margin: 0;
@@ -115,9 +102,7 @@
 }
 
 
-/* ===========================
-   ADD BUTTON
-   =========================== */
+/* ADD BUTTON*/
 
 .buttonWrapper {
     display: flex;
@@ -140,18 +125,14 @@
 }
 
 
-/* ===========================
-   MEAL SPACING
-   =========================== */
+/*MEAL SPACING */
 
 .singleMeal + .singleMeal {
     margin-top: 24px;
 }
 
 
-/* ===========================
-   BASKET STICKY
-   =========================== */
+/*BASKET STICKY */
 
 #basketWrapper {
     position: sticky;

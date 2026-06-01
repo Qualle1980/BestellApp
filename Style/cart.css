@@ -8,12 +8,13 @@
 /* Basket container (NO scrolling here!) */
 #basket {
     width: 500px;
-    height: 800px;
+    min-height: 500px;
+    max-height: 800px;
     background: rgba(54, 53, 52, 1);
     border-radius: 16px;
     padding: 24px;
     color: white;
-    margin-right: -60px;
+    margin-right: 0px;
 
     position: sticky;
     top: 40px;

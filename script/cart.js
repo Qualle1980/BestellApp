@@ -26,27 +26,30 @@ function closeBasketPopup() {
     document.body.classList.remove("noScroll");
 }
 
+function onWindowResize() {
+    if (!isMobileBasketView()) {
+        closeBasketPopup();
+    }
+}
+
 function setupBasketPopupControls() {
     document.getElementById("mobileBasketBtn").addEventListener("click", openBasketPopup);
     document.getElementById("basketCloseBtn").addEventListener("click", closeBasketPopup);
     document.getElementById("basketOverlay").addEventListener("click", closeBasketPopup);
+    window.addEventListener("resize", onWindowResize);
+}
 
-    window.addEventListener("resize", function () {
-        if (!isMobileBasketView()) {
-            closeBasketPopup();
-        }
-    });
+function onOrderOverlayClick(event) {
+    const overlay = document.getElementById("orderOverlay");
+    if (event.target === overlay) {
+        closeOrderPopup();
+    }
 }
 
 function setupOrderOverlay() {
     const overlay = document.getElementById("orderOverlay");
-
     document.getElementById("closeOrderPopup").addEventListener("click", closeOrderPopup);
-    overlay.addEventListener("click", function (event) {
-        if (event.target === overlay) {
-            closeOrderPopup();
-        }
-    });
+    overlay.addEventListener("click", onOrderOverlayClick);
 }
 
 function showOrderPopup() {
@@ -58,88 +61,27 @@ function closeOrderPopup() {
     document.getElementById("orderOverlay").classList.add("hidden");
 }
 
-function addToBasket(id) {
-    let product = null;
-
+function findProductById(id) {
     for (let i = 0; i < produkte.length; i++) {
         if (produkte[i].id === id) {
-            product = produkte[i];
-            break;
+            return produkte[i];
         }
     }
 
-    let existing = null;
+    return null;
+}
 
+function findBasketItemById(id) {
     for (let j = 0; j < basket.length; j++) {
         if (basket[j].id === id) {
-            existing = basket[j];
-            break;
+            return basket[j];
         }
     }
 
-    if (existing) {
-        existing.amount++;
-    } else {
-        basket.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            amount: 1
-        });
-    }
-
-    renderBasket();
-
-    const btn = document.getElementById("btn-" + id);
-    if (btn) {
-        btn.innerText = "Added";
-        btn.classList.add("added");
-    }
+    return null;
 }
 
-function changeAmount(id, change) {
-    let item = null;
-
-    for (let i = 0; i < basket.length; i++) {
-        if (basket[i].id === id) {
-            item = basket[i];
-            break;
-        }
-    }
-
-    if (!item) {
-        return;
-    }
-
-    item.amount += change;
-
-    if (item.amount <= 0) {
-        const newBasket = [];
-
-        for (let j = 0; j < basket.length; j++) {
-            if (basket[j].id !== id) {
-                newBasket.push(basket[j]);
-            }
-        }
-
-        basket = newBasket;
-    }
-
-    renderBasket();
-}
-
-function setupAddButtons() {
-    const buttons = document.querySelectorAll(".addBtn");
-
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", function () {
-            const id = Number(this.dataset.id);
-            addToBasket(id);
-        });
-    }
-}
-
-function removeFromBasket(id) {
+function filterBasketExcludingId(id) {
     const newBasket = [];
 
     for (let j = 0; j < basket.length; j++) {
@@ -148,34 +90,98 @@ function removeFromBasket(id) {
         }
     }
 
-    basket = newBasket;
+    return newBasket;
+}
+
+function pushNewBasketItem(product) {
+    basket.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        amount: 1
+    });
+}
+
+function markButtonAsAdded(id) {
+    const btn = document.getElementById("btn-" + id);
+    if (!btn) {
+        return;
+    }
+
+    btn.innerText = "Added";
+    btn.classList.add("added");
+}
+
+function addToBasket(id) {
+    const product = findProductById(id);
+    const existing = findBasketItemById(id);
+
+    if (existing) {
+        existing.amount++;
+    } else {
+        pushNewBasketItem(product);
+    }
+
+    renderBasket();
+    markButtonAsAdded(id);
+}
+
+function changeAmount(id, change) {
+    const item = findBasketItemById(id);
+    if (!item) {
+        return;
+    }
+
+    item.amount += change;
+
+    if (item.amount <= 0) {
+        basket = filterBasketExcludingId(id);
+    }
+
     renderBasket();
 }
 
+function onAddButtonClick() {
+    addToBasket(Number(this.dataset.id));
+}
+
+function setupAddButtons() {
+    const buttons = document.querySelectorAll(".addBtn");
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", onAddButtonClick);
+    }
+}
+
+function removeFromBasket(id) {
+    basket = filterBasketExcludingId(id);
+    renderBasket();
+}
+
+function bindClickToButtons(selector, handler) {
+    const buttons = document.querySelectorAll(selector);
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", handler);
+    }
+}
+
+function onQtyMinusClick() {
+    changeAmount(Number(this.dataset.id), -1);
+}
+
+function onQtyPlusClick() {
+    changeAmount(Number(this.dataset.id), 1);
+}
+
+function onQtyRemoveClick() {
+    removeFromBasket(Number(this.dataset.id));
+}
+
 function setupBasketButtons() {
-    const minusButtons = document.querySelectorAll(".qtyMinus");
-    const plusButtons = document.querySelectorAll(".qtyPlus");
-    const removeButtons = document.querySelectorAll(".qtyRemove");
-
-    for (let i = 0; i < minusButtons.length; i++) {
-        minusButtons[i].addEventListener("click", function () {
-            const id = Number(this.dataset.id);
-            changeAmount(id, -1);
-        });
-    }
-
-    for (let j = 0; j < plusButtons.length; j++) {
-        plusButtons[j].addEventListener("click", function () {
-            const id = Number(this.dataset.id);
-            changeAmount(id, 1);
-        });
-    }
-
-    for (let k = 0; k < removeButtons.length; k++) {
-        removeButtons[k].addEventListener("click", function () {
-            removeFromBasket(Number(this.dataset.id));
-        });
-    }
+    bindClickToButtons(".qtyMinus", onQtyMinusClick);
+    bindClickToButtons(".qtyPlus", onQtyPlusClick);
+    bindClickToButtons(".qtyRemove", onQtyRemoveClick);
 }
 
 function calcBasketTotals() {
@@ -224,9 +230,7 @@ function handleBuyNow(total) {
     resetAddButtons();
 }
 
-function renderBasket() {
-    const totals = calcBasketTotals();
-
+function updateBasketView(totals) {
     document.getElementById("basketItems").innerHTML = buildBasketItemsHtml();
     document.getElementById("mobileBasketCount").innerText = totals.itemCount;
     document.getElementById("basketTotal").innerHTML = templateBasketSummary(
@@ -234,10 +238,18 @@ function renderBasket() {
         totals.delivery,
         totals.total
     );
-    document.getElementById("buyNowBtn").onclick = function () {
-        handleBuyNow(totals.total);
-    };
+}
 
+function bindBuyNow(total) {
+    document.getElementById("buyNowBtn").onclick = function () {
+        handleBuyNow(total);
+    };
+}
+
+function renderBasket() {
+    const totals = calcBasketTotals();
+    updateBasketView(totals);
+    bindBuyNow(totals.total);
     setupBasketButtons();
 }
 

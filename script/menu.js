@@ -1,18 +1,8 @@
 import { produkte } from "./data.js";
 import { templateCategoryHeader, createMealCard, templateBasket } from "./templates.js";
 
-/* Render basket container */
-document.getElementById("basketWrapper").innerHTML = templateBasket();
-
-/* Cart icon belongs in the mobile footer nav */
-document
-    .getElementById("mobileNav")
-    .appendChild(document.getElementById("mobileBasketBtn"));
-
-/* Menu container */
 const sectionMenu = document.getElementById("sectionMenu");
 
-/* Category definitions */
 const categories = [
     {
         name: "burger",
@@ -31,21 +21,36 @@ const categories = [
     }
 ];
 
-/* Render menu grouped by category */
-for (let c = 0; c < categories.length; c++) {
-    const category = categories[c];
+function renderCategoryProducts(categoryName) {
+    for (let p = 0; p < produkte.length; p++) {
+        if (produkte[p].category !== categoryName) {
+            continue;
+        }
 
+        sectionMenu.insertAdjacentHTML("beforeend", createMealCard(produkte[p]));
+    }
+}
+
+function renderCategory(category) {
     sectionMenu.insertAdjacentHTML(
         "beforeend",
         templateCategoryHeader(category.icon, category.label)
     );
+    renderCategoryProducts(category.name);
+}
 
-    for (let p = 0; p < produkte.length; p++) {
-        if (produkte[p].category === category.name) {
-            sectionMenu.insertAdjacentHTML(
-                "beforeend",
-                createMealCard(produkte[p])
-            );
-        }
+function renderMenu() {
+    for (let c = 0; c < categories.length; c++) {
+        renderCategory(categories[c]);
     }
 }
+
+function setupBasketInDom() {
+    document.getElementById("basketWrapper").innerHTML = templateBasket();
+    document
+        .getElementById("mobileNav")
+        .appendChild(document.getElementById("mobileBasketBtn"));
+}
+
+setupBasketInDom();
+renderMenu();

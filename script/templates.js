@@ -43,7 +43,7 @@ export function createMealCard(product) {
     `;
 }
 
-function templateQtyMinusOrRemove(item) {
+export function templateQtyLeftButton(item) {
     if (item.amount === 1) {
         return `<button type="button" class="qtyRemove" data-id="${item.id}" aria-label="Remove item">🗑️</button>`;
     }
@@ -52,9 +52,9 @@ function templateQtyMinusOrRemove(item) {
 }
 
 export function templateBasketItem(item, itemTotal) {
-    const qtyLeft = templateQtyMinusOrRemove(item);
+    const qtyLeft = templateQtyLeftButton(item);
     return `
-        <div class="basketItem">
+        <div class="basketItem" id="basketItem-${item.id}">
             <span class="basketItemName">${item.name}</span>
             <div class="basketControls">
                 ${qtyLeft}

@@ -1,5 +1,10 @@
 import { produkte } from "./data.js";
-import { templateBasketItem, templateBasketSummary } from "./templates.js";
+import { formatPrice } from "./utils.js";
+import {
+    templateBasketItem,
+    templateBasketSummary,
+    templateQtyLeftButton
+} from "./templates.js";
 
 let basket = [];
 
@@ -112,76 +117,57 @@ function markButtonAsAdded(id) {
     btn.classList.add("added");
 }
 
-function addToBasket(id) {
-    const product = findProductById(id);
-    const existing = findBasketItemById(id);
-
-    if (existing) {
-        existing.amount++;
-    } else {
-        pushNewBasketItem(product);
-    }
-
-    renderBasket();
-    markButtonAsAdded(id);
+function getBasketRow(id) {
+    return document.getElementById("basketItem-" + id);
 }
 
-function changeAmount(id, change) {
-    const item = findBasketItemById(id);
-    if (!item) {
+function appendBasketItemToDom(item) {
+    const itemTotal = item.price * item.amount;
+    const html = templateBasketItem(item, itemTotal);
+
+    document.getElementById("basketItems").insertAdjacentHTML("beforeend", html);
+}
+
+function removeQtyLeftButtons(controls) {
+    const minusBtn = controls.querySelector(".qtyMinus");
+    const removeBtn = controls.querySelector(".qtyRemove");
+
+    if (minusBtn) {
+        minusBtn.remove();
+    }
+
+    if (removeBtn) {
+        removeBtn.remove();
+    }
+}
+
+function replaceQtyLeftButton(item) {
+    const controls = getBasketRow(item.id).querySelector(".basketControls");
+    removeQtyLeftButtons(controls);
+    controls.querySelector(".qtyAmount").insertAdjacentHTML("beforebegin", templateQtyLeftButton(item));
+}
+
+function updateBasketItemInDom(item) {
+    const row = getBasketRow(item.id);
+    if (!row) {
         return;
     }
 
-    item.amount += change;
-
-    if (item.amount <= 0) {
-        basket = filterBasketExcludingId(id);
-    }
-
-    renderBasket();
+    const itemTotal = item.price * item.amount;
+    row.querySelector(".qtyAmount").innerText = item.amount;
+    row.querySelector(".basketItemPrice").innerText = formatPrice(itemTotal) + " €";
+    replaceQtyLeftButton(item);
 }
 
-function onAddButtonClick() {
-    addToBasket(Number(this.dataset.id));
-}
-
-function setupAddButtons() {
-    const buttons = document.querySelectorAll(".addBtn");
-
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", onAddButtonClick);
+function removeBasketItemFromDom(id) {
+    const row = getBasketRow(id);
+    if (row) {
+        row.remove();
     }
 }
 
-function removeFromBasket(id) {
-    basket = filterBasketExcludingId(id);
-    renderBasket();
-}
-
-function bindClickToButtons(selector, handler) {
-    const buttons = document.querySelectorAll(selector);
-
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener("click", handler);
-    }
-}
-
-function onQtyMinusClick() {
-    changeAmount(Number(this.dataset.id), -1);
-}
-
-function onQtyPlusClick() {
-    changeAmount(Number(this.dataset.id), 1);
-}
-
-function onQtyRemoveClick() {
-    removeFromBasket(Number(this.dataset.id));
-}
-
-function setupBasketButtons() {
-    bindClickToButtons(".qtyMinus", onQtyMinusClick);
-    bindClickToButtons(".qtyPlus", onQtyPlusClick);
-    bindClickToButtons(".qtyRemove", onQtyRemoveClick);
+function clearBasketItemsDom() {
+    document.getElementById("basketItems").innerHTML = "";
 }
 
 function calcBasketTotals() {
@@ -198,15 +184,94 @@ function calcBasketTotals() {
     return { subtotal, itemCount, delivery, total: subtotal + delivery };
 }
 
-function buildBasketItemsHtml() {
-    let html = "";
+function updateBasketSummary() {
+    const totals = calcBasketTotals();
 
-    for (let i = 0; i < basket.length; i++) {
-        const item = basket[i];
-        html += templateBasketItem(item, item.price * item.amount);
+    document.getElementById("mobileBasketCount").innerText = totals.itemCount;
+    document.getElementById("basketTotal").innerHTML = templateBasketSummary(
+        totals.subtotal,
+        totals.delivery,
+        totals.total
+    );
+
+    return totals;
+}
+
+function handleBasketButtonClick(btn) {
+    const id = Number(btn.dataset.id);
+
+    if (btn.classList.contains("qtyPlus")) {
+        changeAmount(id, 1);
+    } else if (btn.classList.contains("qtyMinus")) {
+        changeAmount(id, -1);
+    } else if (btn.classList.contains("qtyRemove")) {
+        removeFromBasket(id);
+    }
+}
+
+function onBasketItemsClick(event) {
+    if (event.target.tagName !== "BUTTON") {
+        return;
     }
 
-    return html;
+    handleBasketButtonClick(event.target);
+}
+
+function setupBasketItemListeners() {
+    document.getElementById("basketItems").addEventListener("click", onBasketItemsClick);
+}
+
+function updateBasketAfterAdd(id, existing, product) {
+    if (existing) {
+        existing.amount++;
+        updateBasketItemInDom(existing);
+        return;
+    }
+
+    pushNewBasketItem(product);
+    appendBasketItemToDom(findBasketItemById(id));
+}
+
+function addToBasket(id) {
+    const product = findProductById(id);
+    const existing = findBasketItemById(id);
+
+    updateBasketAfterAdd(id, existing, product);
+    updateBasketSummary();
+    markButtonAsAdded(id);
+}
+
+function changeAmount(id, change) {
+    const item = findBasketItemById(id);
+    if (!item) {
+        return;
+    }
+
+    item.amount += change;
+    if (item.amount <= 0) {
+        removeFromBasket(id);
+    } else {
+        updateBasketItemInDom(item);
+        updateBasketSummary();
+    }
+}
+
+function onAddButtonClick() {
+    addToBasket(Number(this.dataset.id));
+}
+
+function setupAddButtons() {
+    const buttons = document.querySelectorAll(".addBtn");
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener("click", onAddButtonClick);
+    }
+}
+
+function removeFromBasket(id) {
+    basket = filterBasketExcludingId(id);
+    removeBasketItemFromDom(id);
+    updateBasketSummary();
 }
 
 function resetAddButtons() {
@@ -226,34 +291,21 @@ function handleBuyNow(total) {
     closeBasketPopup();
     showOrderPopup();
     basket = [];
-    renderBasket();
+    clearBasketItemsDom();
+    updateBasketSummary();
     resetAddButtons();
 }
 
-function updateBasketView(totals) {
-    document.getElementById("basketItems").innerHTML = buildBasketItemsHtml();
-    document.getElementById("mobileBasketCount").innerText = totals.itemCount;
-    document.getElementById("basketTotal").innerHTML = templateBasketSummary(
-        totals.subtotal,
-        totals.delivery,
-        totals.total
-    );
-}
-
-function bindBuyNow(total) {
+function setupBuyNowButton() {
     document.getElementById("buyNowBtn").onclick = function () {
-        handleBuyNow(total);
+        const totals = calcBasketTotals();
+        handleBuyNow(totals.total);
     };
-}
-
-function renderBasket() {
-    const totals = calcBasketTotals();
-    updateBasketView(totals);
-    bindBuyNow(totals.total);
-    setupBasketButtons();
 }
 
 setupOrderOverlay();
 setupBasketPopupControls();
 setupAddButtons();
-renderBasket();
+setupBasketItemListeners();
+setupBuyNowButton();
+updateBasketSummary();

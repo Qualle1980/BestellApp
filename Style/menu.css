@@ -29,6 +29,7 @@
 }
 
 .categoryHeaderContent h1 {
+    font-family: "Palanquin";
     color: white;
     font-size: 40px;
     font-weight: 700;
@@ -53,13 +54,14 @@
     gap: 20px;
     align-items: flex-start;
     width: 713px;
-    height: 150px;
+    min-height: 161px;
     margin-left: 110px;
 }
 
 .imgMeal {
     width: 207px;
     height: 121px;
+    flex-shrink: 0;
     border-radius: 12px;
     object-fit: cover;
 }
@@ -75,6 +77,7 @@
 /* MEAL TITLE & PRICE */
 
 .mealTitle {
+    font-family: "Palanquin";
     margin: 0;
     font-size: 24px;
     font-weight: 600;
@@ -106,6 +109,7 @@
 /*MEAL DESCRIPTION */
 
 .singleMealContentWrapper p {
+    font-family: "Palanquin";
     margin: 0;
     font-size: 16px;
     font-weight: 500;
@@ -130,7 +134,7 @@
     font-weight: 600;
     cursor: pointer;
 }
-
+/*Button hover*/
 .buttonWrapper button:hover {
     background: #cf5f1b;
 }

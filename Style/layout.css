@@ -66,6 +66,7 @@ main {
 @media (min-width: 1245px) {
     #layout {
         gap: 48px;
+        padding-right: 0;
     }
 
     #sectionMenu {

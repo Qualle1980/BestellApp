@@ -24,6 +24,13 @@
     gap: 24px;
     overflow: hidden;
 }
+
+@media (min-width: 1245px) {
+    #basket {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
 /* #endregion */
 
 /* #region Basket Scroll Area */

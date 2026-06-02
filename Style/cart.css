@@ -188,10 +188,7 @@
 /* #endregion */
 
 /* #region Order Confirmation Overlay */
-/* ================================
-   ORDER CONFIRMATION OVERLAY
-   (NO ANIMATION)
-================================ */
+/* ORDER CONFIRMATION OVERLAY*/
 
 #orderOverlay {
     position: fixed;

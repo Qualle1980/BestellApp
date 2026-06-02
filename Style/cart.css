@@ -1,7 +1,7 @@
 /* #region Basket Layout */
 /* basket inside main with sticky behavior */
 #basketWrapper {
-    width: 380px;
+    width: clamp(360px, 25vw, 560px);
     display: flex;
     justify-content: flex-end;
 }
@@ -9,7 +9,7 @@
 /* Basket container */
 #basket {
     width: 100%;
-    max-width: 380px;
+    max-width: none;
     box-sizing: border-box;
     max-height: 800px;
     min-height: 500px;
@@ -25,7 +25,7 @@
     overflow: hidden;
 }
 
-@media (min-width: 1245px) {
+@media (min-width: 1025px) {
     #basket {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -67,15 +67,32 @@
 
 
 /* #region Basket Header */
+#basketHeader {
+    flex-shrink: 0;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
 /* Basket title */
 #basket h2 {
-    flex-shrink: 0;
     font-size: 22px;
     font-weight: 700;
     margin: 0;
-    align-items: center;
-    display: flex;
-    justify-content: center;
+}
+
+#clearBasketBtn {
+    width: 34px;
+    height: 34px;
+    border: 0;
+    background: transparent;
+    color: #fdeadc;
+    font-size: 22px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
 }
 /* #endregion */
 
@@ -87,15 +104,26 @@
     border-radius: 12px;
     color: black;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     gap: 12px;
     margin-bottom: 5px;
     font-size: 15px;
 }
 
+.basketItemHeader,
+.basketItemFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
 .basketItemName {
     flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-weight: 700;
 }
 
 /* Quantity controls */
@@ -141,6 +169,7 @@
 .basketControls .qtyRemove {
     font-size: 16px;
 }
+
 /* #endregion */
 
 /* #region Basket Summary */
@@ -256,6 +285,9 @@
     padding: 0;
     line-height: 1;
     opacity: 0.8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #closeOrderPopup:hover {

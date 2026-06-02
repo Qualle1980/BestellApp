@@ -1,15 +1,11 @@
 import { produkte } from "./data.js";
 import { formatPrice } from "./utils.js";
-import {
-    templateBasketItem,
-    templateBasketSummary,
-    templateQtyLeftButton
-} from "./templates.js";
+import { templateBasketItem, templateBasketSummary } from "./templates.js";
 
 let basket = [];
 
 function isMobileBasketView() {
-    return window.innerWidth <= 1244;
+    return window.innerWidth <= 1024;
 }
 
 function openBasketPopup() {
@@ -107,16 +103,6 @@ function pushNewBasketItem(product) {
     });
 }
 
-function markButtonAsAdded(id) {
-    const btn = document.getElementById("btn-" + id);
-    if (!btn) {
-        return;
-    }
-
-    btn.innerText = "Added";
-    btn.classList.add("added");
-}
-
 function getBasketRow(id) {
     return document.getElementById("basketItem-" + id);
 }
@@ -128,25 +114,6 @@ function appendBasketItemToDom(item) {
     document.getElementById("basketItems").insertAdjacentHTML("beforeend", html);
 }
 
-function removeQtyLeftButtons(controls) {
-    const minusBtn = controls.querySelector(".qtyMinus");
-    const removeBtn = controls.querySelector(".qtyRemove");
-
-    if (minusBtn) {
-        minusBtn.remove();
-    }
-
-    if (removeBtn) {
-        removeBtn.remove();
-    }
-}
-
-function replaceQtyLeftButton(item) {
-    const controls = getBasketRow(item.id).querySelector(".basketControls");
-    removeQtyLeftButtons(controls);
-    controls.querySelector(".qtyAmount").insertAdjacentHTML("beforebegin", templateQtyLeftButton(item));
-}
-
 function updateBasketItemInDom(item) {
     const row = getBasketRow(item.id);
     if (!row) {
@@ -154,9 +121,9 @@ function updateBasketItemInDom(item) {
     }
 
     const itemTotal = item.price * item.amount;
+    row.querySelector(".basketItemName").innerText = item.name;
     row.querySelector(".qtyAmount").innerText = item.amount;
     row.querySelector(".basketItemPrice").innerText = formatPrice(itemTotal) + " €";
-    replaceQtyLeftButton(item);
 }
 
 function removeBasketItemFromDom(id) {
@@ -168,6 +135,13 @@ function removeBasketItemFromDom(id) {
 
 function clearBasketItemsDom() {
     document.getElementById("basketItems").innerHTML = "";
+}
+
+function clearBasket() {
+    basket = [];
+    clearBasketItemsDom();
+    updateBasketSummary();
+    resetAddButtons();
 }
 
 function calcBasketTotals() {
@@ -238,7 +212,6 @@ function addToBasket(id) {
 
     updateBasketAfterAdd(id, existing, product);
     updateBasketSummary();
-    markButtonAsAdded(id);
 }
 
 function changeAmount(id, change) {
@@ -303,9 +276,14 @@ function setupBuyNowButton() {
     };
 }
 
+function setupClearBasketButton() {
+    document.getElementById("clearBasketBtn").addEventListener("click", clearBasket);
+}
+
 setupOrderOverlay();
 setupBasketPopupControls();
 setupAddButtons();
 setupBasketItemListeners();
 setupBuyNowButton();
+setupClearBasketButton();
 updateBasketSummary();

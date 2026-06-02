@@ -1,11 +1,14 @@
 import { formatPrice } from "./utils.js";
 
-export function templateCategoryHeader(icon, title) {
+export function templateCategoryHeader(icon, title, mobileTitle = title) {
     return `
         <header class="categoryHeader">
             <div class="categoryHeaderContent">
                 <img src="${icon}" alt="${title}">
-                <h1>${title}</h1>
+                <h1>
+                    <span class="categoryTitleDesktop">${title}</span>
+                    <span class="categoryTitleMobile">${mobileTitle}</span>
+                </h1>
             </div>
         </header>
     `;
@@ -43,25 +46,20 @@ export function createMealCard(product) {
     `;
 }
 
-export function templateQtyLeftButton(item) {
-    if (item.amount === 1) {
-        return `<button type="button" class="qtyRemove" data-id="${item.id}" aria-label="Remove item">🗑️</button>`;
-    }
-
-    return `<button type="button" class="qtyMinus" data-id="${item.id}" aria-label="Decrease amount">-</button>`;
-}
-
 export function templateBasketItem(item, itemTotal) {
-    const qtyLeft = templateQtyLeftButton(item);
     return `
         <div class="basketItem" id="basketItem-${item.id}">
-            <span class="basketItemName">${item.name}</span>
-            <div class="basketControls">
-                ${qtyLeft}
-                <span class="qtyAmount">${item.amount}</span>
-                <button type="button" class="qtyPlus" data-id="${item.id}" aria-label="Increase amount">+</button>
+            <div class="basketItemHeader">
+                <span class="basketItemName">${item.name}</span>
             </div>
-            <span class="basketItemPrice">${formatPrice(itemTotal)} €</span>
+            <div class="basketItemFooter">
+                <div class="basketControls">
+                    <button type="button" class="qtyMinus" data-id="${item.id}" aria-label="Decrease amount">-</button>
+                    <span class="qtyAmount">${item.amount}</span>
+                    <button type="button" class="qtyPlus" data-id="${item.id}" aria-label="Increase amount">+</button>
+                </div>
+                <span class="basketItemPrice">${formatPrice(itemTotal)} €</span>
+            </div>
         </div>
     `;
 }
@@ -93,7 +91,10 @@ function templateBasketPanel() {
         <div id="basketOverlay"></div>
         <div id="basket">
             <button id="basketCloseBtn" type="button" aria-label="Close basket">×</button>
-            <h2>Your Order</h2>
+            <div id="basketHeader">
+                <h2>Your Order</h2>
+                <button id="clearBasketBtn" type="button" aria-label="Clear basket">🗑️</button>
+            </div>
             <div id="basketItems"></div>
             <div id="basketSummary">
                 <div id="basketTotal"></div>
@@ -106,7 +107,7 @@ function templateBasketPanel() {
 function templateMobileBasketBtn() {
     return `
         <button id="mobileBasketBtn" type="button" aria-label="Open basket">
-            <img src="./assets/icon/shopping-cart-icon-white.png" alt="">
+            <img src="./assets/icon/orders.png" alt="">
             <span id="mobileBasketCount">0</span>
         </button>
     `;

@@ -18,10 +18,13 @@
     <body>
 
         <header id="topHeader">
-            <img
-                src="./assets/icon/menu-icon-white.png"
-                alt="menu_icon_white"
-            />
+            <div id="appBrand">
+                <img src="./assets/icon/orders.png" alt="" />
+                <span class="appBrandText">
+                    <span class="appBrandSmall">Bestell</span>
+                    <span class="appBrandLarge">APP</span>
+                </span>
+            </div>
             <img
                 id="menuIcon"
                 src="./assets/icon/menu.png"
@@ -44,14 +47,14 @@
         <section id="restaurantHeader">
             <div id="restaurantHeaderContent">
                 <div id="restaurantInfo">
-                    <img
-                        src="./assets/icon/burgerHouseLogo.png"
-                        alt="burgerHouseLogo"
-                    />
-                    <img
-                        src="./assets/icon/rating-icon.png"
-                        alt="rating-icon"
-                    />
+                    <h1 id="restaurantName">
+                        <span>Burger</span><span>House</span>
+                    </h1>
+                    <div id="restaurantRating">
+                        <span aria-hidden="true">★</span>
+                        <strong>4,1</strong>
+                        <span>(317)</span>
+                    </div>
                 </div>
                 <p class="restaurantTagline">
                     The best of Burgers, Pizza, and Greens, all in one great

@@ -7,16 +7,19 @@ const categories = [
     {
         name: "burger",
         label: "Burger & Sandwiches",
+        mobileLabel: "Burger",
         icon: "assets/icon/burger-icon.png"
     },
     {
         name: "pizza",
         label: "Pizza (30cm)",
+        mobileLabel: "Pizza (30cm)",
         icon: "assets/icon/pizza-icon.png"
     },
     {
         name: "salad",
         label: "Salads",
+        mobileLabel: "Salads",
         icon: "assets/icon/salad-icon.png"
     }
 ];
@@ -34,7 +37,7 @@ function renderCategoryProducts(categoryName) {
 function renderCategory(category) {
     sectionMenu.insertAdjacentHTML(
         "beforeend",
-        templateCategoryHeader(category.icon, category.label)
+        templateCategoryHeader(category.icon, category.label, category.mobileLabel)
     );
     renderCategoryProducts(category.name);
 }

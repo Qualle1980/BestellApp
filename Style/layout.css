@@ -1,3 +1,4 @@
+/* #region Main Layout */
 /* Main Wrapper */
 main {
     width: 100%;
@@ -16,7 +17,9 @@ main {
     align-items: flex-start;
     gap: 40px;
 }
+/* #endregion */
 
+/* #region Menu Layout */
 /* Menu Section */
 #sectionMenu {
     width: 100%;
@@ -25,7 +28,9 @@ main {
     flex-direction: column;
     gap: 40px;
 }
+/* #endregion */
 
+/* #region Basket Layout */
 /* Basket Section */
 #basketWrapper {
     width: 380px;
@@ -37,7 +42,9 @@ main {
     align-self: flex-start;
     z-index: 10;
 }
+/* #endregion */
 
+/* #region Summary Layout */
 /* Summary Row */
 .summaryRow {
     display: flex;
@@ -52,7 +59,9 @@ main {
     background: rgba(255, 255, 255, 0.25);
     margin: 8px 0 4px 0;
 }
+/* #endregion */
 
+/* #region Desktop Layout */
 /* Desktop: Warenkorb rechts, gleicher Abstand zwischen allen Karten */
 @media (min-width: 1245px) {
     #layout {
@@ -73,3 +82,4 @@ main {
         box-sizing: border-box;
     }
 }
+/* #endregion */

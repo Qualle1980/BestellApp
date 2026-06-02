@@ -1,3 +1,4 @@
+/* #region Basket Layout */
 /* basket inside main with sticky behavior */
 #basketWrapper {
     width: 380px;
@@ -23,7 +24,9 @@
     gap: 24px;
     overflow: hidden;
 }
+/* #endregion */
 
+/* #region Basket Scroll Area */
 /* Scrollable article area (ab max. 800px) */
 #basketItems {
     flex: 1 1 auto;
@@ -53,8 +56,10 @@
 #basketItems::-webkit-scrollbar-thumb:hover {
     background: rgba(253, 234, 220, 0.85);
 }
+/* #endregion */
 
 
+/* #region Basket Header */
 /* Basket title */
 #basket h2 {
     flex-shrink: 0;
@@ -65,7 +70,9 @@
     display: flex;
     justify-content: center;
 }
+/* #endregion */
 
+/* #region Basket Items */
 /* Single basket item */
 .basketItem {
     background: rgba(253, 234, 220, 1);
@@ -127,7 +134,9 @@
 .basketControls .qtyRemove {
     font-size: 16px;
 }
+/* #endregion */
 
+/* #region Basket Summary */
 /* Summary area  */
 #basketSummary {
     flex-shrink: 0;
@@ -168,12 +177,17 @@
 #buyNowBtn:hover {
     background: #cf5f1b;
 }
+/* #endregion */
 
+/* #region Hidden Basket Controls */
 #basketOverlay,
 #basketCloseBtn,
 #mobileBasketBtn {
     display: none;
 }
+/* #endregion */
+
+/* #region Order Confirmation Overlay */
 /* ================================
    ORDER CONFIRMATION OVERLAY
    (NO ANIMATION)
@@ -243,3 +257,4 @@
 #closeOrderPopup:hover {
     opacity: 1;
 }
+/* #endregion */

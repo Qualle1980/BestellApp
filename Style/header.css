@@ -1,3 +1,4 @@
+/* #region Top Header */
 header {
     width: 100%;
     height: 128px;
@@ -12,7 +13,9 @@ header {
 header img {
     height: 60px;
 }
+/* #endregion */
 
+/* #region Restaurant Header */
 #restaurantHeader {
     width: 100%;
     padding: 40px 80px;
@@ -45,7 +48,9 @@ header img {
     font-weight: 700;
     font-size: 24px;
 }
+/* #endregion */
 
+/* #region Hero */
 #hero {
     width: 100%;
     height: 420px;
@@ -98,7 +103,9 @@ header img {
 #headerImgStartPage img {
     height: 42px;
 }
+/* #endregion */
 
+/* #region Header Text */
 .p {
     display: flex;
     align-items: center;
@@ -109,7 +116,9 @@ header img {
 #sectionMenu {
     padding-top: 100px;
 }
+/* #endregion */
 
+/* #region Footer */
 footer {
     width: 100%;
     height: 128px;
@@ -134,3 +143,4 @@ footer p span:first-child {
     font-family: "Palanquin";
     font-weight: 400;
 }
+/* #endregion */

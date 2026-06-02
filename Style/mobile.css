@@ -1,3 +1,4 @@
+/* #region Tablet Layout */
 @media (max-width: 1244px) {
     body.noScroll {
         overflow: hidden;
@@ -210,13 +211,17 @@
         padding: 0 5px;
     }
 }
+/* #endregion */
 
+/* #region Desktop Mobile Navigation */
 @media (min-width: 1245px) {
     #mobileNav {
         display: none;
     }
 }
+/* #endregion */
 
+/* #region Mobile Layout */
 @media (max-width: 640px) {
     html,
     body {
@@ -384,3 +389,4 @@
         max-width: 340px;
     }
 }
+/* #endregion */

@@ -1,3 +1,4 @@
+/* #region Category Header */
 
 /* CATEGORY HEADER*/
 
@@ -35,15 +36,19 @@
     font-weight: 700;
     margin: 0;
 }
+/* #endregion */
 
 
+/* #region Menu Section */
 /* MENU SECTION SPACING */
 
 #sectionMenu {
     padding-top: 0;
 }
+/* #endregion */
 
 
+/* #region Meal Card */
 /* MEAL CARD */
 
 .singleMeal {
@@ -72,8 +77,10 @@
     gap: 12px;
     width: 100%;
 }
+/* #endregion */
 
 
+/* #region Meal Content */
 /* MEAL TITLE & PRICE */
 
 .mealTitle {
@@ -115,8 +122,10 @@
     font-weight: 500;
     line-height: 1;
 }
+/* #endregion */
 
 
+/* #region Add Button */
 /* ADD BUTTON*/
 
 .buttonWrapper {
@@ -138,5 +147,6 @@
 .buttonWrapper button:hover {
     background: #cf5f1b;
 }
+/* #endregion */
 
 

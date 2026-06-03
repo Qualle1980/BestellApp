@@ -50,11 +50,11 @@ export function templateBasketItem(item, itemTotal) {
     return `
         <div class="basketItem" id="basketItem-${item.id}">
             <div class="basketItemHeader">
-                <span class="basketItemName">${item.name}</span>
+                <span class="basketItemName">${item.amount} x ${item.name}</span>
             </div>
             <div class="basketItemFooter">
                 <div class="basketControls">
-                    <button type="button" class="qtyMinus" data-id="${item.id}" aria-label="Decrease amount">-</button>
+                    ${templateBasketDecreaseButton(item)}
                     <span class="qtyAmount">${item.amount}</span>
                     <button type="button" class="qtyPlus" data-id="${item.id}" aria-label="Increase amount">+</button>
                 </div>
@@ -62,6 +62,14 @@ export function templateBasketItem(item, itemTotal) {
             </div>
         </div>
     `;
+}
+
+export function templateBasketDecreaseButton(item) {
+    if (item.amount === 1) {
+        return `<button type="button" class="qtyRemove" data-id="${item.id}" aria-label="Remove item">&#128465;</button>`;
+    }
+
+    return `<button type="button" class="qtyMinus" data-id="${item.id}" aria-label="Decrease amount">-</button>`;
 }
 
 function templateSummaryRow(label, amount) {

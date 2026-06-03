@@ -119,6 +119,12 @@
     gap: 12px;
 }
 
+.basketItemFooter {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+}
+
 .basketItemName {
     flex: 1;
     min-width: 0;
@@ -130,20 +136,22 @@
 .basketControls {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    justify-content: flex-start;
+    gap: 2px;
     flex-shrink: 0;
+    justify-self: start;
 }
 
 .basketControls .qtyAmount {
-    min-width: 24px;
+    min-width: 12px;
     text-align: center;
     font-size: 15px;
     font-weight: 600;
     line-height: 28px;
 }
 
-.basketControls button {
+.basketControls button,
+.qtyRemove {
     width: 28px;
     height: 28px;
     min-width: 28px;
@@ -162,12 +170,19 @@
     cursor: pointer;
 }
 
-.basketControls button:hover {
+.basketControls button:hover,
+.qtyRemove:hover {
     background: rgba(255, 255, 255, 0.25);
 }
 
-.basketControls .qtyRemove {
-    font-size: 16px;
+.qtyRemove {
+    font-size: 15px;
+}
+
+.basketItemPrice {
+    justify-self: end;
+    text-align: right;
+    white-space: nowrap;
 }
 
 /* #endregion */

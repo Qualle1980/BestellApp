@@ -157,6 +157,7 @@
     }
 
     #mobileNav a,
+    #mobileNav .mobileNavIdle,
     #mobileBasketBtn {
         flex: 1;
         max-width: 72px;
@@ -168,6 +169,11 @@
         background: transparent;
         cursor: pointer;
         position: relative;
+    }
+
+    #mobileNav .mobileNavIdle {
+        opacity: 0.72;
+        cursor: default;
     }
 
     #mobileNav img,

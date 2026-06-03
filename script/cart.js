@@ -1,6 +1,6 @@
 import { produkte } from "./data.js";
 import { formatPrice } from "./utils.js";
-import { templateBasketItem, templateBasketSummary } from "./templates.js";
+import { templateBasketDecreaseButton, templateBasketItem, templateBasketSummary } from "./templates.js";
 
 let basket = [];
 
@@ -121,7 +121,8 @@ function updateBasketItemInDom(item) {
     }
 
     const itemTotal = item.price * item.amount;
-    row.querySelector(".basketItemName").innerText = item.name;
+    row.querySelector(".basketItemName").innerText = item.amount + " x " + item.name;
+    row.querySelector(".basketControls").firstElementChild.outerHTML = templateBasketDecreaseButton(item);
     row.querySelector(".qtyAmount").innerText = item.amount;
     row.querySelector(".basketItemPrice").innerText = formatPrice(itemTotal) + " €";
 }

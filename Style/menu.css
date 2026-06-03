@@ -16,6 +16,8 @@
 }
 
 .categoryHeaderContent {
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 100%;
     display: flex;
@@ -59,13 +61,33 @@
 /* #region Desktop Category Bar */
 @media (min-width: 1025px) {
     .categoryHeader {
+        width: 100%;
+        margin-left: 0;
+        background: transparent;
+        overflow: visible;
+        z-index: 0;
+    }
+
+    .categoryHeader::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(-1 * ((100vw - min(100vw, 1440px)) / 2));
         width: 100vw;
+        background-color: #e76c1f;
+        z-index: 0;
+    }
+
+    .categoryHeaderContent {
+        margin-left: 0;
     }
 }
 
 @media (min-width: 1025px) and (max-width: 1180px) {
     .categoryHeader {
-        width: 100vw;
+        width: 100%;
+        margin-left: 0;
     }
 }
 /* #endregion */

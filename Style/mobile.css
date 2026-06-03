@@ -229,8 +229,8 @@
         display: grid;
         place-items: center;
         border-radius: 999px;
-        background: #e76c1f;
-        color: white;
+        background: rgba(253, 234, 220, 1);
+        color: #e76c1f;
         font-size: 12px;
         font-weight: 700;
         line-height: 1;

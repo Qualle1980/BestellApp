@@ -107,7 +107,7 @@ function templateBasketPanel() {
 function templateMobileBasketBtn() {
     return `
         <button id="mobileBasketBtn" type="button" aria-label="Open basket">
-            <img src="./assets/icon/orders.png" alt="">
+            <img src="./assets/icon/shopping-cart-orange.png" alt="">
             <span id="mobileBasketCount">0</span>
         </button>
     `;
